@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workshop:BiosampleCollection ID="XNAT_E00010" project="TEST" label="TEST_0007_BIO01" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow http://localhost/schemas/workflow.xsd http://nrg.wustl.edu/catalog http://localhost/schemas/catalog.xsd http://nrg.wustl.edu/pipe http://localhost/schemas/repository.xsd http://nrg.wustl.edu/rad http://localhost/schemas/radRead.xsd http://nrg.wustl.edu/workshop http://localhost/schemas/workshop.xsd http://nrg.wustl.edu/scr http://localhost/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc http://localhost/schemas/project.xsd http://icr.ac.uk/icr http://localhost/schemas/roi.xsd http://nrg.wustl.edu/val http://localhost/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat http://localhost/schemas/xnat.xsd http://nrg.wustl.edu/xnat_assessments http://localhost/schemas/assessments.xsd http://www.nbirn.net/prov http://localhost/schemas/birnprov.xsd http://nrg.wustl.edu/security http://localhost/schemas/security.xsd">
+<xnat:date>2022-12-11</xnat:date>
+<xnat:subject_ID>XNAT_S00008</xnat:subject_ID>
+<workshop:dna>1</workshop:dna>
+<workshop:Currsite>here</workshop:Currsite>
+<workshop:Subject_Identification>123</workshop:Subject_Identification>
+<workshop:Scan_Date>2022-12-12</workshop:Scan_Date>
+<workshop:Scan_Time>06:24:46</workshop:Scan_Time>
+<workshop:DICOM_pixel_size_x>0.0</workshop:DICOM_pixel_size_x>
+<workshop:Time_From_Bi_Hr>0.0</workshop:Time_From_Bi_Hr>
+<workshop:Z_Axial_Brain_Scan>0</workshop:Z_Axial_Brain_Scan>
+<workshop:Z_brain_Thin_Scans>0</workshop:Z_brain_Thin_Scans>
+<workshop:Selected_Scan_Number>0</workshop:Selected_Scan_Number>
+<workshop:X_Dimension>0</workshop:X_Dimension>
+<workshop:Y_Dimension>0</workshop:Y_Dimension>
+<workshop:Slice_Number>0</workshop:Slice_Number>
+<workshop:rna>1</workshop:rna>
+<workshop:plasma>1</workshop:plasma>
+<workshop:serumone>1</workshop:serumone>
+<workshop:tilt>1</workshop:tilt>
+<workshop:baseline>1</workshop:baseline>
+</workshop:BiosampleCollection>

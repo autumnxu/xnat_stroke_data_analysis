@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 9]><html class="ie ie8 ltie9 ltie10"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 ltie10"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+
+    <!-- start xnat-templates/navigations/htmlOpen -->
+
+    
+    <!-- isLoginPage? false -->
+    <script>
+        window.isLoginPage = (function(){
+            console.log('isLoginPage: false')
+            return false
+        })();
+    </script>
+    <!-- save url hash from page load -->
+    <script>
+        window.urlHash = window.location.hash;
+    </script>
+
+        
+    <title>SNIPR</title>
+    <!-- HeaderIncludes -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- path: /xnat-templates/navigations/HeaderIncludes -->
+
+
+
+
+
+
+
+
+<!-- START BaseJS.vm -->
+
+
+
+
+
+
+    <!-- load polyfills before ANY other JavaScript -->
+    <script src="/scripts/polyfills.js?t=1669083368"></script>
+    <script src="/scripts/polyfills/FormData/formdata.min.js?t=1669083368"></script>
+
+    <!-- XNAT global functions (no dependencies) -->
+    <script src="/scripts/globals.js?t=1669083368"></script>
+
+    <!-- set global vars that are used often -->
+    <script>
+
+        var XNAT = XNAT || {};
+        var serverRoot = '';
+        var csrfToken = '3a3ecf22-6ad7-4a75-a803-f32e90864719';
+        var showReason = realValue('false');
+        var requireReason = realValue('false');
+        var logoutUrl = '/app/action/LogoutUser';
+        var cacheLastModified = realValue('1675383468209');
+
+        XNAT.buildTime = ('1669083368000' * 1)
+        XNAT.logoutUrl = logoutUrl;
+        XNAT.cacheLastModified = cacheLastModified;
+
+    </script>
+    
+    <!-- store username globally -->
+    <script>
+                    window.username = 'guest';
+                console.log('username: ' + window.username);
+    </script>
+
+    <!-- set theme js vars -->
+    
+    <!-- required libraries -->
+    <script src="/scripts/lib/loadjs/loadjs.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/scripts/lib/jquery/jquery-migrate-3.3.2.js"></script>
+    <script>
+        // alias jQuery to jq
+        var jq = jQuery;
+    </script>
+
+    <!-- jQuery plugins -->
+    <link rel="stylesheet" type="text/css" href="/scripts/lib/jquery-plugins/chosen/chosen.min.css?t=1669083368">
+    <script src="/scripts/lib/jquery-plugins/chosen/chosen.jquery.min.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery-plugins/jquery.maskedinput.min.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery-plugins/jquery.hasClasses.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery-plugins/jquery.dataAttr.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery-plugins/jquery.form.js?t=1669083368"></script>
+    <script src="/scripts/lib/jquery-plugins/jquery.dateFormat.min.js?t=1669083368"></script>
+
+    <!-- other libraries -->
+    <script src="/scripts/lib/spawn/spawn.js?t=1669083368"></script>
+    <script src="/scripts/lib/js.cookie.js?t=1669083368"></script>
+    <script src="/scripts/lib/yamljs/dist/yaml.js?t=1669083368"></script>
+    <script src="/scripts/lib/form2js/src/form2js.js?t=1669083368"></script>
+        <script src="/scripts/lib/x2js/xml2json.js?t=1669083368"></script>
+    <script src="/scripts/lib/DefiantJS/dist/defiant.min.js?t=1669083368"></script>
+    <script src="/scripts/lib/jsonpath/jsonpath.js?t=1669083368"></script>
+    <script src="/scripts/lib/ace/ace.js?t=1669083368"></script>
+
+    <!-- XNAT utility functions -->
+    <script src="/scripts/utils.js?t=1669083368"></script>
+
+    
+
+<!-- END BaseJS.vm -->
+
+
+
+
+<!-- setup XNAT namespace -->
+<script>
+
+    /*
+     * XNAT global namespace object, which will not be overwriten if
+     * already defined. Also define some other top level namespaces.
+     */
+    extend(XNAT, {
+        /*
+         * Parent namespace that templates can use to put their
+         * own namespace
+         */
+        app: {
+            displayNames: {
+                singular: {
+                    project: "Project",
+                    subject: "Subject",
+                    imageSession: "Session",
+                    mrSession: "MR Session"
+                },
+                plural: {
+                    project: "Projects",
+                    subject: "Subjects",
+                    imageSession: "Sessions",
+                    mrSession: "MR Sessions"
+                }
+            },
+            siteId: "SNIPR"
+        },
+        data: {
+            context: {
+                siteName: 'SNIPR',
+                projectName: '',
+
+                                    projectID: '',
+                    project: '',
+                                                                parentProjectID: '',
+                                    
+                xsiType: "",
+
+                
+                                subjectLabel: '',
+                subjectID: '',
+
+                                label: '',
+
+                ID: ''
+                            },
+            timestamp: jq.now() // timestamp for the page when it loads
+        }
+    });
+
+    if (XNAT.data.context.projectName === "") {
+                XNAT.data.context.projectName = '';
+    }
+
+    // 'page' object is same as 'context' - easier to remember?
+    XNAT.data.page = XNAT.data.context;
+
+    XNAT.data.siteConfig = getObject(XNAT.data.siteConfig || {});
+
+    XNAT.app.showLeftBar = realValue(true);
+    XNAT.app.showLeftBarProjects = realValue(true);
+    XNAT.app.showLeftBarFavorites = realValue(true);
+    XNAT.app.showLeftBarSearch =  realValue(true);
+    XNAT.app.showLeftBarBrowse = realValue(true);
+    XNAT.app.dateFormat = "yyyy-MM-dd";
+    
+    
+    if (window.projectScope) {
+        XNAT.data.context.project = XNAT.data.context.projectID = window.projectScope
+    }
+
+    
+    // quickly reference today's date
+    XNAT.data.todaysDate = {};
+    // if today was January 23, 2013...
+    // m (1), mm (01), d (23), dd (23), yyyy (2013), ISO/iso (2013-01-23), US/us (01/23/2013)
+    (function (dateObj) {
+        dateObj.date = new Date();
+        dateObj.gotMonth = dateObj.date.getMonth();
+        dateObj.m = (dateObj.gotMonth + 1).toString();
+        dateObj.mm = (dateObj.m.length === 1) ? '0' + dateObj.m : dateObj.m;
+        dateObj.d = dateObj.date.getDate().toString();
+        dateObj.dd = (dateObj.d.length === 1) ? '0' + dateObj.d : dateObj.d;
+        dateObj.yyyy = dateObj.date.getFullYear().toString();
+        dateObj.ISO = dateObj.iso = dateObj.yyyy + '-' + dateObj.mm + '-' + dateObj.dd;
+        dateObj.US = dateObj.us = dateObj.mm + '/' + dateObj.dd + '/' + dateObj.yyyy;
+    })(XNAT.data.todaysDate);
+
+</script>
+<script>
+    // initialize "Chosen" menus on DOM load
+    // all <select class="xnat-menu"> elements
+    // will be converted
+    // putting this here to be at the top of
+    // the jQuery DOM-ready queue
+    jq(function(){ menuInit() });
+</script>
+<script src="/scripts/xdat.js"></script>
+<script src="/scripts/DynamicJSLoad.js"></script>
+
+<!-- YAHOO USER INTERFACE files below here -->
+<script src="/scripts/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script src="/scripts/yui/build/event/event-min.js"></script>
+<script src="/scripts/yui/build/container/container-min.js"></script>
+<script src="/scripts/yui/build/menu/menu-min.js"></script>
+<script src="/scripts/yui/build/element/element-beta-min.js"></script>
+<script src="/scripts/yui/build/button/button-min.js"></script>
+<script src="/scripts/yui/build/connection/connection-min.js"></script>
+<script src="/scripts/yui/build/treeview/treeview-min.js"></script>
+<script src="/scripts/yui/build/cookie/cookie-min.js"></script>
+<script src="/scripts/yui/build/tabview/tabview-min.js"></script>
+<script src="/scripts/yui/build/datasource/datasource-min.js"></script>
+<script src="/scripts/yui/build/resize/resize-min.js"></script>
+<script src="/scripts/yui/build/dragdrop/dragdrop-min.js"></script>
+<script src="/scripts/yui/build/datatable/datatable-min.js"></script>
+<script src="/scripts/yui/build/paginator/paginator-min.js"></script>
+<script src="/scripts/yui/build/json/json-min.js"></script>
+<script src="/scripts/yui/xnat_loader.js"></script>
+<script src="/scripts/LeftBarTreeView.js"></script>
+<script src="/scripts/justification/justification.js"></script>
+<script>
+
+    // The YUIDOM alias is used throughout XNAT
+    var YUIDOM = YAHOO.util.Dom;
+
+    XNAT.app = getObject(XNAT.app||{});
+    XNAT.app.addFormCSRF = function(form){
+        $$(form||'form').each(function(){
+            var form$ = $(this);
+            if (!form$.has('input[name="XNAT_CSRF"]').length){
+                form$.append('<input type="hidden" name="XNAT_CSRF" value="' + csrfToken + '">')
+            }
+        });
+    };
+
+    jq(function(){
+        // add hidden input with CSRF data
+        // to all forms on page load
+        XNAT.app.addFormCSRF();
+    });
+
+</script>
+
+<!-- YUI css -->
+<link rel="stylesheet" type="text/css" href="/scripts/yui/build/assets/skins/xnat/xnat.css?t=1669083368">
+
+<!-- date input stuff -->
+<link rel="stylesheet" type="text/css" href="/scripts/lib/dateTimePicker/jquery.datetimepicker.min.css?t=1669083368">
+<script src="/scripts/lib/dateTimePicker/jquery.datetimepicker.full.min.js?t=1669083368"></script>
+
+<link rel="stylesheet" type="text/css" href="/scripts/yui/build/calendar/assets/skins/sam/calendar.css?t=1669083368">
+<script src="/scripts/yui/build/calendar/calendar-min.js?t=1669083368"></script>
+<script src="/scripts/ezCalendar.js?t=1669083368"></script>
+
+<!--triage stuff-->
+<script type="text/javascript" src="/scripts/triage/Triage_resource_delete.js"></script>
+<script type="text/javascript" src="/scripts/triage/Triage_resource_approve.js"></script>
+<script type="text/javascript" src="/scripts/triage/Triage_file_approve.js"></script>
+<script type="text/javascript" src="/scripts/triage/Triage_file_delete.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- START AppJS.vm -->
+
+
+
+    <!-- app.css loaded first -->
+    <link rel="stylesheet" type="text/css" href="/style/app.css?t=1669083368">
+
+    <!-- Icon sets -->
+    <link rel="stylesheet" type="text/css" href="/style/font-awesome.css?x=1675384561465">
+    <link rel="stylesheet" type="text/css" href="/style/icons.css?t=1669083368">
+    <link rel="stylesheet" type="text/css" href="/page/admin/style.css?t=1669083368">
+
+    <link rel="stylesheet" type="text/css" href="/scripts/xmodal-v1/xmodal.css?t=1669083368">
+    <script src="/scripts/xmodal-v1/xmodal.js?t=1669083368"></script>
+    <script src="/scripts/xmodal-v1/xmodal-migrate.js?t=1669083368"></script>
+
+    
+    <!-- XNAT JLAPI stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/scripts/xnat/ui/dialog.css?t=1669083368">
+
+    <!-- XNAT JLAPI scripts -->
+    <script src="/scripts/xnat/util/sub64.js?t=1669083368"></script>
+    <script src="/scripts/xnat/parse.js?t=1669083368"></script>
+    <script src="/scripts/xnat/validate.js?t=1669083368"></script>
+    <script src="/scripts/xnat/url.js?t=1669083368"></script>
+    <script src="/scripts/xnat/xhr.js?t=1669083368"></script>
+    <script src="/scripts/xnat/cookie.js?t=1669083368"></script>
+    <script src="/scripts/xnat/event.js?t=1669083368"></script>
+    <script src="/scripts/xnat/element.js?t=1669083368"></script>
+    <script src="/scripts/xnat/storage.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/form.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/templates.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/input.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/select.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/table.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/panel.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/tabs.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/banner.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/popup.js?t=1669083368"></script>
+    <script src="/scripts/xnat/ui/dialog.js?t=1669083368"></script>
+
+    <!-- The Spawner! -->
+    <script src="/scripts/xnat/spawner.js?t=1669083368"></script>
+
+    <!-- XNAT app scripts (do not load on login page) -->
+    
+    <script src="/scripts/xnat/app/codeEditor.js?t=1669083368"></script>
+    <script src="/scripts/xnat/app/pluginSettings.js?t=1669083368"></script>
+    <script src="/scripts/xnat/app/customPage.js?t=1669083368"></script>
+    <script src="/scripts/xnat/app/dataTypeAccess.js?t=1669083368"></script>
+
+    <!-- window.available_elements -->
+    <script>
+
+        window.available_elements = [];
+        window.browseableElements = {};
+
+        if (!window.isLoginPage && window.loadDataTypes) {
+            console.log('getBrowseableElements');
+            XNAT.app.dataTypeAccess.getElements['browseable'].ready(function(data){
+                var getByName = window.available_elements.getByName;
+                window.available_elements = data.sortedElements;
+                window.available_elements.getByName = getByName;
+                window.browseableElements = data.elementMap;
+            });
+        }
+
+        window.available_elements_getByName = function (name) {
+            // return empty object if not found
+            return window.browseableElements[name] || {}
+        };
+
+        window.available_elements.getByName = window.available_elements_getByName;
+
+    </script>
+
+    
+    
+    <!-- JS functions to initialize XNAT -->
+    <script src="/scripts/xnat/init.js?t=1669083368"></script>
+
+    
+
+<!-- END AppJS.vm -->
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/scripts/tabWrangler/tabWrangler.css?t=1669083368">
+<script src="/scripts/tabWrangler/tabWrangler.js?t=1669083368"></script>
+
+
+											<!-- allowGuest: true -->
+<link rel="stylesheet" type="text/css" href="/scripts/xnat/plugin/workflowMgmt/dependencies/jsTree/style.min.css"/>
+<script type="text/javascript" src="/scripts/xnat/plugin/workflowMgmt/dependencies/jstree.min.js"></script>
+<script type="text/javascript" src="/scripts/xnat/plugin/workflowMgmt/user_dashboard.js"></script>
+<script type="text/javascript" src="/scripts/xnat/plugin/containerService/containerService-history.js"></script>
+<script type="text/javascript" src="/scripts/xnat/plugin/workflowMgmt/workflowmgmt.js"></script>
+																						
+    <!-- /HeaderIncludes -->
+
+    <!-- end xnat-templates/navigations/htmlOpen -->
+
+<script>
+    window.isLoginPage = true;
+    window.loadDataTypes = false;
+</script>
+
+<!-- path: xnat-templates/navigations/bodyOpen -->
+</head>
+<body id="page_body" class="xnat yui-skin-sam">
+
+
+<!-- path: xnat-templates/layouts/Login -->
+<div id="xnat-login">
+    <script>
+        window.isLoginPage = true;
+        window.location.hash = '#!';
+    </script>
+    
+
+
+
+
+
+
+
+<!-- BEGIN NoMenuTop.vm -->
+
+
+<div id="user_bar" class="no_menu">
+    	                            	    <div class="clear"></div>
+</div><!-- /user_bar -->
+
+<div id="page_wrapper">
+
+<div id="header" class="main_header"><div class="pad">
+    <a id="header_logo" href="/app/template/Index.vm">
+        
+
+
+<img class="logo_img" src="/images/SNIPR-Logo.png" style="border:none;">
+    </a>
+</div></div>
+<!-- END NoMenuTop.vm -->
+
+    <div id="layout_content2" style="display:none;">Loading...</div>
+    <div id="layout_content">
+
+
+
+
+
+
+
+
+
+<!-- BEGIN xnat-templates/screens/Login.vm -->
+
+
+
+    
+    
+
+<script src="/scripts/lib/epicEditor/js/epiceditor.js"></script>
+
+<script>
+//    XNAT.cookie.set('SESSION_ACTIVE', 'false');
+//    XNAT.cookie.set('SESSION_LOGOUT_REDIRECT', 'true');
+</script>
+
+<!--[if lte IE 8]>
+<div id="ie8_error" class="error" style="display:none;margin-bottom:4em;background-image:none;z-index:9">
+        SNIPR does not support Internet Explorer version 8 or below.
+    <br><br>
+    We recommend using a modern browser such as
+    <a class="link" href="https://www.mozilla.org/en-US/firefox/desktop/" target="_blank">Mozilla Firefox</a>,
+    <a class="link" href="http://www.opera.com/" target="_blank">Opera</a>,
+    <a class="link" href="https://www.google.com/chrome/" target="_blank">Google Chrome</a>, or a newer
+    version of Internet Explorer (version 9.0 or higher).
+</div>
+<![endif]-->
+
+
+<div id="login_area">
+
+
+    <div id="login_welcome" class="login-box-container-flex">
+                    <div id="siteDescription"></div>
+            <textarea id="siteDescriptionMd" style="display: none;">Welcome to **SNIPR**: The **Stroke Neuroimaging Phenotype Repository** (**SNIPR**) is a large multi-center centralized imaging repository of clinical CT and MRI scans from stroke patients worldwide. The aims of this repository are to  (i) Study **stroke neuroimaging phenotypes** (ii) Expedite development of **cutting edge deep learning pipelines** to perform large-scale analysis of complications after stroke.
+
+For help desk support, please send an email to cnda-help@wustl.edu or call 314-286-0549 and mention that you are working on SNIPR.</textarea>
+            </div>
+
+    <div class="login-box-container-fixed">
+        <div id="login_box">
+
+        
+        <form name="form1" method="post" action="/login" class="noHide friendlyForm validate" id="login_form">
+                
+    
+                    <input type="hidden" id="login_method" name="login_method" value="localdb"/>
+                        <p>
+                <label for="username">User</label>
+                <input type="text"
+                       id="username"
+                       name="username"
+                       title="User"
+                       data-validate="not-empty"
+                       data-message="Username cannot be blank.">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input type="password"
+                       id="password"
+                       name="password"
+                       autocomplete="off"
+                       title="Password"
+                       data-validate="not-empty"
+                       data-message="Password cannot be blank.">
+            </p>
+
+            <p class="form-submit">
+            <span id="register_forgot" style="float:left">
+                                    <a href="/app/template/Register.vm">Register</a>
+                                <a href="/app/template/ForgotLogin.vm">Forgot login or password?</a>
+                <a href="#" id="loginBoxMoreOptionsBtn" onclick="$('#loginBoxMoreOptions').slideToggle('fast')">More Options</a>
+            </span>
+            <button class="submit btn" id="loginButton" type="submit" name="login">Login</button>
+        </p>
+        <input type="hidden" name="XNAT_CSRF" value="">
+    </form>
+    </div>
+    <div id="loginBoxMoreOptions">
+        <ul>
+                </ul>
+    </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+
+<script>
+    $(function(){
+
+        var mdtext = $('#siteDescriptionMd').text();
+        var markedText = marked(mdtext);
+        $('#siteDescription').html(markedText);
+
+        $('#login_form').on('submit', function(e){
+
+            var errorCount = 0;
+
+//            var messages = [];
+//            var _form = $(this);
+//            var _username = _form.find('[name="username"]');
+//            var _password = _form.find('[name="password"]');
+//
+//            XNAT.validate(_username).minLength(1).failure(function(){
+//                errors += 1;
+//                messages.push('Username field cannot be blank')
+//            });
+//
+//            XNAT.validate(_username).minLength(1).failure(function(){
+//                errors += 1;
+//                messages.push('Password field cannot be blank')
+//            });
+//
+//            if (errors) {
+//                xmodal.message('<ul><li>' + messages.join('</li><li>') + '</li></ul>')
+//            }
+
+            XNAT.xhr.submit(this, {
+                invalid: function(form, ers){
+                    errorCount = ers.length;
+                    return false;
+                },
+                // callback for successful validation
+                valid: function(){
+                    // validation passed, hide the
+                    // form and open the loader
+                    concealContent();
+                    // xmodal.loading.open();
+                    // return false here to stop
+                    // execution of XNAT.xhr.submit())
+                    return false;
+                }
+            });
+
+            return errorCount === 0;
+
+        });
+        
+        if($("#loginBoxMoreOptions > ul > li").size() > 0){
+            $("#loginBoxMoreOptionsBtn").show()
+        }
+    });
+
+</script>
+
+
+<!-- END xnat-templates/screens/Login.vm -->
+
+
+<!--[if lte IE 8]>
+<script>
+    // detect IE8, prevent user logon. From http://stackoverflow.com/a/15983064
+    function isIE () {
+        var myNav = navigator.userAgent.toLowerCase();
+        return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+    }
+    if (isIE() === 8) {
+        $('#login_box').addClass('disabled').find(':input').addClass('disabled').prop('disabled', true);
+        $('#ie8_error').show();
+    }
+</script>
+<![endif]-->
+</div>
+</div><!-- /#xnat-login -->
+<script>
+        jq('#username').focus();
+</script>
+
+
+<!-- path: xnat-templates/navigations/htmlClose -->
+</div><!-- /page_wrapper -->
+
+<div id="activity-tab">
+    <div class="panel-header">
+        <div class="title">Background processes <span class="count"></span></div>
+        <div class="actions">
+            <a class="activity-min icn" href="#"><i class="fa fa-angle-down"></i></a>
+            <a class="activity-max icn" href="#"><i class="fa fa-angle-up"></i></a>
+            <a class="activity-close icn" href="#"><i class="fa fa-close"></i></a>
+        </div>
+    </div>
+    <div class="panel-body"></div>
+</div>
+
+
+<div class="clear"></div>
+<div id="xnat_power">
+    </div>
+
+
+<script type="text/javascript" src="/scripts/footer.js"></script>
+</body>
+</html>

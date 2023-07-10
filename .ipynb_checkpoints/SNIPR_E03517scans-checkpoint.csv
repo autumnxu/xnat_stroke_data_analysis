@@ -1,0 +1,27 @@
+xnat_imagescandata_id,ID,type,quality,xsiType,note,series_description,URI
+42068,1,Other,usable,xnat:ctScanData,,Topogram  0.6  T20f,/data/experiments/SNIPR_E03517/scans/1
+42069,2,Z-Axial-Brain,usable,xnat:ctScanData,,NCCT Head,/data/experiments/SNIPR_E03517/scans/2
+42070,3,Z-Axial-Bone,usable,xnat:ctScanData,,Head_Spiral   1.0  H60s,/data/experiments/SNIPR_E03517/scans/3
+42071,4,Z-Brain-Thin,usable,xnat:ctScanData,,Head_Spiral   1.0  H20s,/data/experiments/SNIPR_E03517/scans/4
+42072,5,Other,usable,xnat:ctScanData,,Head_Spiral   3.0  MPR  cor,/data/experiments/SNIPR_E03517/scans/5
+42073,6,Other,usable,xnat:ctScanData,,Head_Spiral   3.0  MPR  sag,/data/experiments/SNIPR_E03517/scans/6
+42074,7,Other,usable,xnat:ctScanData,,Head_Spiral   3.0  MPR  ax,/data/experiments/SNIPR_E03517/scans/7
+42075,8,Other,usable,xnat:ctScanData,,VPCT  PERFUSION  10.0  H20f,/data/experiments/SNIPR_E03517/scans/8
+42076,9,Other,usable,xnat:ctScanData,,Topogram  0.6  T20f,/data/experiments/SNIPR_E03517/scans/9
+42077,12,Other,usable,xnat:ctScanData,,Monitoring  10.0  B20s,/data/experiments/SNIPR_E03517/scans/12
+42078,13,Other,usable,xnat:ctScanData,,CTA HeadNeck  1.0  B20f,/data/experiments/SNIPR_E03517/scans/13
+42079,15,Other,usable,xnat:ctScanData,,AXIAL MIP,/data/experiments/SNIPR_E03517/scans/15
+42080,16,Other,usable,xnat:ctScanData,,SAGITTAL MIP,/data/experiments/SNIPR_E03517/scans/16
+42081,17,Other,usable,xnat:ctScanData,,CTAHeadNeck  2.0  MPR  cor,/data/experiments/SNIPR_E03517/scans/17
+42082,18,Other,usable,xnat:ctScanData,,CTAHeadNeck  2.0  MPR  sag,/data/experiments/SNIPR_E03517/scans/18
+42083,19,Other,usable,xnat:ctScanData,,CORONAL  MIP,/data/experiments/SNIPR_E03517/scans/19
+42084,20,Z-Axial-Bone,usable,xnat:ctScanData,,BONE AXIAL,/data/experiments/SNIPR_E03517/scans/20
+42085,502,Other,usable,xnat:ctScanData,,Patient Protocol,/data/experiments/SNIPR_E03517/scans/502
+42086,507,Other,usable,xnat:ctScanData,,CTA HeadNeck  1.0  B20f,/data/experiments/SNIPR_E03517/scans/507
+42087,801,Other,usable,xnat:ctScanData,,RAPID CT-P Summary,/data/experiments/SNIPR_E03517/scans/801
+42088,811,Other,usable,xnat:ctScanData,,RAPID tsMIP AIF/VOF Location,/data/experiments/SNIPR_E03517/scans/811
+42089,831,Other,usable,xnat:ctScanData,,RAPID Perfusion Parameter Maps Colored,/data/experiments/SNIPR_E03517/scans/831
+42090,842,Other,usable,xnat:ctScanData,,RAPID AIF/VOF Location,/data/experiments/SNIPR_E03517/scans/842
+42091,1301,Other,usable,xnat:ctScanData,,RAPID Angiography Summary Assessment,/data/experiments/SNIPR_E03517/scans/1301
+42092,1302,Other,usable,xnat:ctScanData,,RAPID Angio Rendering MIP rotZ LH,/data/experiments/SNIPR_E03517/scans/1302
+42093,1303,Other,usable,xnat:ctScanData,,RAPID Angio Rendering MIP rotX,/data/experiments/SNIPR_E03517/scans/1303

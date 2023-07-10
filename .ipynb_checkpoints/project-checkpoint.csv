@@ -1,0 +1,16 @@
+ID,secondary_ID,name,description,pi_firstname,pi_lastname,URI
+TEST,TEST,TEST Project,,,,/data/projects/TEST
+VHUH,Barcelona,Barcelona Scans,,,,/data/projects/VHUH
+Krakow,Krakow,Krakow Scans,,,,/data/projects/Krakow
+Providence,Providence,Providence Scans,,,,/data/projects/Providence
+WashU,WUSTL,WUSTL Scans,,,,/data/projects/WashU
+Helsinki,Helsinki,Helsinki Scans,,,,/data/projects/Helsinki
+CTP,Perfusion,Perfusion Imaging,,,,/data/projects/CTP
+SAH,SAH,Subarachnoid Hemorrhage,Imaging of patients with subarachnoid hemorrhage,,,/data/projects/SAH
+OSU,OSU,Ohio State,Imaging from OSU Stroke project,,,/data/projects/OSU
+BJH,BJH LVO Stroke,Barnes-Jewish Hospital LVO Strokes,,,,/data/projects/BJH
+YaleLVO,Yale LVO Hemodynamics,Yale LVO Stroke Hemodynamics and Cerebral Edema,,,,/data/projects/YaleLVO
+dAVFTest,dAVF test,dAVF test,Test for a dAVF repository,Rano,Chatterjee,/data/projects/dAVFTest
+WATERSHED,WATERSHED,Pathophysiology and Imaging Biomarkers in Cerebral Watershed Infraction,,Saurav,Das,/data/projects/WATERSHED
+TEST_ATUL,myproject,TEST_ATUL,,,,/data/projects/TEST_ATUL
+COLI,Coliseum,COLISEUM,,,,/data/projects/COLI

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workshop:BiosampleCollection ID="XNAT_E00041" project="TEST" label="TEST_0002_BIO09" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow http://localhost/schemas/workflow.xsd http://nrg.wustl.edu/catalog http://localhost/schemas/catalog.xsd http://nrg.wustl.edu/pipe http://localhost/schemas/repository.xsd http://nrg.wustl.edu/rad http://localhost/schemas/radRead.xsd http://nrg.wustl.edu/workshop http://localhost/schemas/workshop.xsd http://nrg.wustl.edu/scr http://localhost/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc http://localhost/schemas/project.xsd http://icr.ac.uk/icr http://localhost/schemas/roi.xsd http://nrg.wustl.edu/val http://localhost/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat http://localhost/schemas/xnat.xsd http://nrg.wustl.edu/xnat_assessments http://localhost/schemas/assessments.xsd http://www.nbirn.net/prov http://localhost/schemas/birnprov.xsd http://nrg.wustl.edu/security http://localhost/schemas/security.xsd">
+<xnat:date>2022-12-27</xnat:date>
+<xnat:subject_ID>XNAT_S00003</xnat:subject_ID>
+<workshop:Scan_Date>2012-05-08</workshop:Scan_Date>
+<workshop:Scan_Time>23:12:12</workshop:Scan_Time>
+<workshop:DICOM_pixel_size_x>1232.0</workshop:DICOM_pixel_size_x>
+<workshop:DICOM_pixel_size_y>1232.0</workshop:DICOM_pixel_size_y>
+<workshop:Slice_Thickness>1232</workshop:Slice_Thickness>
+<workshop:Total_Cerebrospinal_Fluid_Volume>1232.0</workshop:Total_Cerebrospinal_Fluid_Volume>
+<workshop:Selected_Scan_Number>1232</workshop:Selected_Scan_Number>
+<workshop:Net_Water_Uptake>1232.0</workshop:Net_Water_Uptake>
+<workshop:Cerebrospinal_Fluid_Ratio>1232.0</workshop:Cerebrospinal_Fluid_Ratio>
+<workshop:X_Dimension>1232</workshop:X_Dimension>
+<workshop:Y_Dimension>1232</workshop:Y_Dimension>
+<workshop:Slice_Number>1232</workshop:Slice_Number>
+</workshop:BiosampleCollection>

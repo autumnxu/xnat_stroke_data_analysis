@@ -1,0 +1,29 @@
+CURL commands that work
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/projects/?format=csv'  > project.csv
+
+code that works but not in a useful manner
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/projects/${projectID}/experiments/?format=csv'  > project_sessions.csv
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/projects/'${projectID}'/experiments/?format=csv'  > project_sessions.csv
+session_id=SNIPR_E03516
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/projects/'${projectID}'/experiments/'${session_id}'/scans/?format=csv'  > project_sessions_SNIPR_E03516_scans.csv
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/projects/'${projectID}'/experiments/'${session_id}'/scans/?format=csv'  > project_sessions_SNIPR_E03516_scans.csv
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   $XNAT_HOST'/data/experiments/'$sessionID'/scans/?format=csv'  > "${session_id}scans.csv"
+
+
+
+to download NIFTI files
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   {$XNAT_HOST}'/data/experiments/'${sessionID}'/scans/'${scanID}'/resources/NIFTI/files?format=zip' > "${sessionID}_${scanID}_NIFTI.zip"
+
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   {$XNAT_HOST}'/data/experiments/'${sessionID}'/scans/'${scanID}'/resources/NIFTI/files?format=zip' > "${sessionID}_${scanID}_NIFTI.zip"
+
+XNAT_USER=autumnxu
+XNAT_PASS=abc123
+XNAT_HOST=https://snipr-dev-test1.nrg.wustl.edu
+sessionID=SNIPR_E03516
+scanID: integer from 1 to i don't know what
+
+curl  -u   $XNAT_USER:$XNAT_PASS  -X GET   {$XNAT_HOST}'/data/experiments/'${sessionID}'/scans/'${scanID}'/resources/DICOM/files?format=zip' > "${sessionID}_${scanID}_DICOM.zip"
+
+while moving to a folder of the same name
+unzip -d ~/Documents/pydicom_work/${sessionID}_${scanID}_DICOM/ -j  ${sessionID}_${scanID}_DICOM.zip
+rm ${sessionID}_${scanID}_DICOM.zip            

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workshop:BiosampleCollection ID="SNIPR03_E00094" project="BJH" label="001_BIO01" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:sni="http://nrg.wustl.edu/sni" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow https://snipr-dev-test1.nrg.wustl.edu/schemas/workflow.xsd http://nrg.wustl.edu/catalog https://snipr-dev-test1.nrg.wustl.edu/schemas/catalog.xsd http://nrg.wustl.edu/pipe https://snipr-dev-test1.nrg.wustl.edu/schemas/repository.xsd http://nrg.wustl.edu/rad https://snipr-dev-test1.nrg.wustl.edu/schemas/radRead.xsd http://nrg.wustl.edu/workshop https://snipr-dev-test1.nrg.wustl.edu/schemas/workshop.xsd http://nrg.wustl.edu/scr https://snipr-dev-test1.nrg.wustl.edu/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc https://snipr-dev-test1.nrg.wustl.edu/schemas/project.xsd http://icr.ac.uk/icr https://snipr-dev-test1.nrg.wustl.edu/schemas/roi.xsd http://nrg.wustl.edu/val https://snipr-dev-test1.nrg.wustl.edu/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat https://snipr-dev-test1.nrg.wustl.edu/schemas/xnat.xsd http://nrg.wustl.edu/sni https://snipr-dev-test1.nrg.wustl.edu/schemas/sniData.xsd http://nrg.wustl.edu/xnat_assessments https://snipr-dev-test1.nrg.wustl.edu/schemas/assessments.xsd http://www.nbirn.net/prov https://snipr-dev-test1.nrg.wustl.edu/schemas/birnprov.xsd http://nrg.wustl.edu/security https://snipr-dev-test1.nrg.wustl.edu/schemas/security.xsd">
+<xnat:date>2023-01-26</xnat:date>
+<xnat:subject_ID>SNIPR_S01016</xnat:subject_ID>
+<workshop:Scan_Date>2021-04-03</workshop:Scan_Date>
+<workshop:Scan_Timing>232.0</workshop:Scan_Timing>
+<workshop:Scan_Identification>232</workshop:Scan_Identification>
+<workshop:DICOM_pixel_size_x>232.0</workshop:DICOM_pixel_size_x>
+<workshop:DICOM_pixel_size_y>232.0</workshop:DICOM_pixel_size_y>
+<workshop:Slice_Thickness>232</workshop:Slice_Thickness>
+<workshop:Total_Cerebrospinal_Fluid_Volume>232.0</workshop:Total_Cerebrospinal_Fluid_Volume>
+<workshop:Selected_Scan_Number>232</workshop:Selected_Scan_Number>
+<workshop:Net_Water_Uptake>232.0</workshop:Net_Water_Uptake>
+<workshop:Cerebrospinal_Fluid_Ratio>232.0</workshop:Cerebrospinal_Fluid_Ratio>
+<workshop:X_Dimension>232</workshop:X_Dimension>
+<workshop:Y_Dimension>999</workshop:Y_Dimension>
+<workshop:Slice_Number>232</workshop:Slice_Number>
+</workshop:BiosampleCollection>

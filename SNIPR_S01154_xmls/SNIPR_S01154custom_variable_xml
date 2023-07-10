@@ -1,0 +1,1696 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xnat:Subject ID="SNIPR_S01154" project="BJH" label="BJH_001" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow https://snipr-dev-test1.nrg.wustl.edu/schemas/workflow.xsd http://nrg.wustl.edu/catalog https://snipr-dev-test1.nrg.wustl.edu/schemas/catalog.xsd http://nrg.wustl.edu/pipe https://snipr-dev-test1.nrg.wustl.edu/schemas/repository.xsd http://nrg.wustl.edu/rad https://snipr-dev-test1.nrg.wustl.edu/schemas/radRead.xsd http://nrg.wustl.edu/workshop https://snipr-dev-test1.nrg.wustl.edu/schemas/workshop.xsd http://nrg.wustl.edu/scr https://snipr-dev-test1.nrg.wustl.edu/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc https://snipr-dev-test1.nrg.wustl.edu/schemas/project.xsd http://icr.ac.uk/icr https://snipr-dev-test1.nrg.wustl.edu/schemas/roi.xsd http://nrg.wustl.edu/val https://snipr-dev-test1.nrg.wustl.edu/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat https://snipr-dev-test1.nrg.wustl.edu/schemas/xnat.xsd http://nrg.wustl.edu/xnat_assessments https://snipr-dev-test1.nrg.wustl.edu/schemas/assessments.xsd http://www.nbirn.net/prov https://snipr-dev-test1.nrg.wustl.edu/schemas/birnprov.xsd http://nrg.wustl.edu/security https://snipr-dev-test1.nrg.wustl.edu/schemas/security.xsd">
+<xnat:fields>
+<xnat:field name="Disease_Type">Ischemic Stroke</xnat:field>
+<xnat:field name="Stroke_Side">Left</xnat:field>
+<xnat:field name="Hemorrhagic_Transformation">None</xnat:field>
+<xnat:field name="Cerebral_Edema_Grading_for_Ischemic_Stroke">0 = No Edema</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x000001ED122EDFF0&gt;">Ischemic Stroke</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x000001ED122EDDF0&gt;">Left</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x000001ED1377ADD0&gt;">None</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x000001ED126B6D90&gt;">0 = No Edema</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x00000258B02EC530&gt;">Ischemic Stroke</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x00000258B02ED4F0&gt;">Left</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x00000258B158C9E0&gt;">None</xnat:field>
+<xnat:field name="&lt;built-in method lower of str object at 0x00000258B06B7810&gt;">0 = No Edema</xnat:field>
+<xnat:field name="hemorrhagic_transformation">None</xnat:field>
+<xnat:field name="stroke_territory_aca_involved">.</xnat:field>
+<xnat:field name="global_cerebral_edema_for_sah">.</xnat:field>
+<xnat:field name="stroke_side">No Stroke Seen</xnat:field>
+<xnat:field name="cerebral_edema_grading_for_ischemic_stroke">0 = No edema</xnat:field>
+<xnat:field name="stroke_territory_pca_involved">.</xnat:field>
+<xnat:field name="stroke_territory_mca_involved">.</xnat:field>
+<xnat:field name="lesion_location">NA</xnat:field>
+<xnat:field name="disease_type">No Stroke Seen</xnat:field>
+<xnat:field name="intraventricular_hemorrhage_for_ich_and_sah">.</xnat:field>
+<xnat:field name="Stroke_Territory_MCA_Involved">t</xnat:field>
+<xnat:field name="Stroke_Territory_mca_Involved">.</xnat:field>
+<xnat:field name="hand">U</xnat:field>
+<xnat:field name="yob">U</xnat:field>
+<xnat:field name="hemispheric">NA</xnat:field>
+<xnat:field name="mca_territory_involved">NA</xnat:field>
+<xnat:field name="aca_territory_involved">NA</xnat:field>
+<xnat:field name="pca_territory_involved">NA</xnat:field>
+<xnat:field name="old_stroke_present">No</xnat:field>
+<xnat:field name="old_stroke_location">na</xnat:field>
+<xnat:field name="lacunar_stroke">NA</xnat:field>
+<xnat:field name="cerebellar_stroke">NA</xnat:field>
+<xnat:field name="brainstem_involved">NA</xnat:field>
+<xnat:field name="wmd_present">No</xnat:field>
+<xnat:field name="wmd_severity">NA</xnat:field>
+<xnat:field name="needs_review"/>
+<xnat:field name="mr sessions">nan</xnat:field>
+<xnat:field name="ct sessions">3</xnat:field>
+<xnat:field name="lvo"/>
+<xnat:field name="proximal_ica_tandem_occlusion"/>
+<xnat:field name="cerebral_edema_grade">9 = Unable to Assess</xnat:field>
+<xnat:field name="toast"/>
+<xnat:field name="et"/>
+<xnat:field name="stroke_onset_time">22:00</xnat:field>
+<xnat:field name="dhc"/>
+<xnat:field name="stroke_onset_date">11/12/2019</xnat:field>
+<xnat:field name="ivt"/>
+</xnat:fields>
+<xnat:experiments>
+<xnat:experiment ID="SNIPR_E03663" project="BJH" label="BJH_001_11112019" session_type="BJH" modality="CT" UID="1.2.840.113654.2.45.6242.43535537590674430976691574161559379902" xsi:type="xnat:ctSessionData">
+<xnat:date>2019-11-11</xnat:date>
+<xnat:time>10:14:28</xnat:time>
+<xnat:subject_ID>SNIPR_S01154</xnat:subject_ID>
+<xnat:prearchivePath>/data/snipr/prearchive/BJH/20201027_170141783/BJH_001_11112019</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.6242.48194697230551221900874171751298811860" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  0.6  T20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="528726" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="11193" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:14:34</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>13504.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>486.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>3.5999999999999996</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>100.0</xnat:tableSpeed>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>0.13487191614600857</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Other" UID="1.2.840.113654.2.45.6242.269471743836372516926034074199066972939" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>PreMonitoring  10.0  B30s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="529198" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="62829" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PROCESSING" file_count="2" file_size="106" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/2/PROCESSING/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:15:36</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.642578125" y="0.642578125" z="10.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 MON\PMON</xnat:imageType>
+<xnat:options>XOP\DSEQ\0001\CONT\RSER000001\RIMA000001\A4TP000000MS00</xnat:options>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>40.0</xnat:xrayTubeCurrent>
+<xnat:exposure>20.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B30s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>10.0</xnat:single>
+<xnat:total>10.0</xnat:total>
+</xnat:collimationWidth>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>1.18626839411335</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Other" UID="1.2.840.113654.2.45.6242.266506821246326132216316124877715726847" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Monitoring  10.0  B30s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>5</xnat:frames>
+<xnat:file label="DICOM" file_count="5" file_size="2645590" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="242183" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:16:03</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.642578125" y="0.642578125" z="10.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 MON</xnat:imageType>
+<xnat:options>XOP\DSEQ\0001\CONT\RSER000001\RIMA000030\A4TP000000MS00</xnat:options>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>40.0</xnat:xrayTubeCurrent>
+<xnat:exposure>20.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B30s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>10.0</xnat:single>
+<xnat:total>10.0</xnat:total>
+</xnat:collimationWidth>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>1.18626839411335</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="4" type="Z-Brain-Thin" UID="1.2.840.113654.2.45.6242.2991020812271288880773392112147931646" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Run Off  2.0  I30f  1</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1273</xnat:frames>
+<xnat:file label="DICOM" file_count="1273" file_size="673768980" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/4/DICOM/scan_4_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="667418976" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/4/NIFTI/NIFTI_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PROCESSING" file_count="2" file_size="106" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/4/PROCESSING/4_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:18:15</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.759765625" y="0.759765625" z="2.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>8</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>28.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>I30f\1</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>46.0</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>23.0</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.6</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">46.0</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="5" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.6242.194454413758559858292251853419004186666" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Run Off  3.0  B60f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>55</xnat:frames>
+<xnat:file label="DICOM" file_count="55" file_size="29109410" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/5/DICOM/scan_5_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="3574442" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/5/SNAPSHOTS/5_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:19:12</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.580078125" y="0.580078125" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>8</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>28.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B60f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>46.0</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>23.0</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.6</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">46.0</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="6" type="Other" UID="1.2.840.113654.2.45.6242.258414169453909261760368553147548333983" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Run Off  30.0  MIP  cor</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>54</xnat:frames>
+<xnat:file label="DICOM" file_count="54" file_size="84266996" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/6/DICOM/scan_6_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="5055787" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/6/SNAPSHOTS/6_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:19:20</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.8459512837393" y="0.845703125" z="30.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="1519"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>8</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MIP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>307.0</xnat:xrayTubeCurrent>
+<xnat:exposure>255.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>28.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>I30f\1</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>46.0</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>23.0</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.6</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">46.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>4.756319499130435</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="7" type="Z-Brain-Thin" UID="1.2.840.113654.2.45.6242.227881038151142397321554271165826654793" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Knee to toe  2.0  I30f  1</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>564</xnat:frames>
+<xnat:file label="DICOM" file_count="564" file_size="298508026" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/7/DICOM/scan_7_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1355093" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/7/SNAPSHOTS/7_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:21:07</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.59375" y="0.59375" z="2.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>172.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>18.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>I30f\1</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>46.0</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>23.0</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.6</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">34.7203</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="401" type="Other" UID="1.2.840.113654.2.45.6242.75670357955941901162898252796989355926" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Enhancement curve</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526596" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/401/DICOM/scan_401_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/401/SNAPSHOTS/401_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:16:54</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="502" type="Other" UID="1.2.840.113654.2.45.6242.325917584296390395334716405889925576181" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526606" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/502/DICOM/scan_502_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/502/SNAPSHOTS/502_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:22:04</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="512" type="Other" UID="1.2.840.113654.2.45.6242.300930866817122420705167463600726268669" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Run Off  2.0  I30f  1</xnat:series_description>
+<xnat:scanner manufacturer="Vital Images, Inc." model="Vitrea"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="12" file_size="14903208" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/512/DICOM/scan_512_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:43:10</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="1037" type="Other" UID="1.2.840.113654.2.45.6242.64324303855683873838879415951693831889" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>[1] Distance Line Vasc</xnat:series_description>
+<xnat:scanner manufacturer="Siemens Healthineers" model="syngo.via.VB30A"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="656978" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1037/DICOM/scan_1037_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="64591" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1037/SNAPSHOTS/1037_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:39:35</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.53544658" y="0.53544664" z="5.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="639"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\SECONDARY\AXIAL\MIP THIN</xnat:imageType>
+<xnat:filter>FLAT</xnat:filter>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="1043" type="Other" UID="1.2.840.113654.2.45.6242.70586247769667963754637927631099579877" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>[2] Distance Line Vasc</xnat:series_description>
+<xnat:scanner manufacturer="Siemens Healthineers" model="syngo.via.VB30A"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="578126" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1043/DICOM/scan_1043_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="42080" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1043/SNAPSHOTS/1043_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:40:02</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.59375" y="0.59375" z="5.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="562"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\SECONDARY\AXIAL\MIP THIN</xnat:imageType>
+<xnat:filter>FLAT</xnat:filter>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="1080" type="Other" UID="1.2.840.113654.2.45.6242.267152493033146413240411800311776486150" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>[4] Distance Line Vasc</xnat:series_description>
+<xnat:scanner manufacturer="Siemens Healthineers" model="syngo.via.VB30A"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="613966" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1080/DICOM/scan_1080_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="44667" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1080/SNAPSHOTS/1080_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:46:42</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.59375" y="0.59375" z="5.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="597"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\SECONDARY\AXIAL\MIP THIN</xnat:imageType>
+<xnat:filter>FLAT</xnat:filter>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="1091" type="Other" UID="1.2.840.113654.2.45.6242.27750971073415664085618820203008815603" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>[5] Distance Line Vasc</xnat:series_description>
+<xnat:scanner manufacturer="Siemens Healthineers" model="syngo.via.VB30A"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="970318" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1091/DICOM/scan_1091_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="68627" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1091/SNAPSHOTS/1091_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:48:43</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.59375" y="0.59375" z="5.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="945"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\SECONDARY\AXIAL\MIP THIN</xnat:imageType>
+<xnat:filter>FLAT</xnat:filter>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="1096" type="Other" UID="1.2.840.113654.2.45.6242.116453657073654293845681437794592614236" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03663</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>[6] Distance Line Vasc</xnat:series_description>
+<xnat:scanner manufacturer="Siemens Healthineers" model="syngo.via.VB30A"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="974414" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1096/DICOM/scan_1096_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="82950" URI="/data/snipr/archive/BJH/arc001/BJH_001_11112019/SCANS/1096/SNAPSHOTS/1096_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>11:03:52</xnat:startTime>
+<xnat:start_date>2019-11-11</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.59375" y="0.59375006" z="5.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="949"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:acquisitionNumber>9</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\SECONDARY\AXIAL\MIP THIN</xnat:imageType>
+<xnat:filter>FLAT</xnat:filter>
+</xnat:parameters>
+</xnat:scan>
+</xnat:scans>
+<xnat:dcmPatientId>BJH_001_11112019</xnat:dcmPatientId>
+<xnat:dcmPatientName>BJH_001</xnat:dcmPatientName>
+<xnat:dcmPatientWeight>70.126</xnat:dcmPatientWeight>
+</xnat:experiment>
+<xnat:experiment ID="SNIPR_E03664" project="BJH" label="BJH_001_11132019" session_type="BJH" modality="CT" UID="1.2.840.113654.2.45.6242.93617528326876836747744724806072654918" xsi:type="xnat:ctSessionData">
+<xnat:date>2019-11-13</xnat:date>
+<xnat:time>08:16:06</xnat:time>
+<xnat:subject_ID>SNIPR_S01154</xnat:subject_ID>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:prearchivePath>/data/snipr/prearchive/BJH/20201027_170928259/BJH_001_11132019</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.6242.120578197380542164550152305659089994639" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  0.6  T20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>2</xnat:frames>
+<xnat:file label="DICOM" file_count="2" file_size="1057194" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="34388" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:20:21</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+<xnat:parameters>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>240.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>2671.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>96.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>3.5999999999999996</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>100.0</xnat:tableSpeed>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>0.28786318508195136</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Z-Axial-Brain" UID="1.2.840.113654.2.45.6242.243958853090685927789297008266646803221" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   3.0  J40s  2</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>57</xnat:frames>
+<xnat:file label="DICOM" file_count="57" file_size="30158228" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1678856" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="29884768" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/NIFTI/NIFTI_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PROCESSING" file_count="20" file_size="405767711" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/PROCESSING/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="MASKS" file_count="4" file_size="241159" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/MASKS/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NWUCALCULATION" file_count="7" file_size="28609169" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/2/NWUCALCULATION/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:22:20</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.4453125" y="0.4453125" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>240.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">43.549</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.6242.303085057629914934084280871836470368058" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   1.0  H70h</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>171</xnat:frames>
+<xnat:file label="DICOM" file_count="171" file_size="90472100" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="3097549" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:22:46</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.4453125" y="0.4453125" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>240.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H70h</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">43.549</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="4" type="Other" UID="1.2.840.113654.2.45.6242.82700315543377713689241519955358765798" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   3.0  MPR  cor</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>74</xnat:frames>
+<xnat:file label="DICOM" file_count="74" file_size="48018004" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/4/DICOM/scan_4_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1995905" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/4/SNAPSHOTS/4_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:23:03</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.33203125" y="0.33227344992051" z="3.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="629" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>240.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>194.0</xnat:xrayTubeCurrent>
+<xnat:exposure>242.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H31s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">43.549</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>34.87067976547231</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="5" type="Z-Brain-Thin" UID="1.2.840.113654.2.45.6242.308249749338954666176669968995146113088" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   1.0  J40s  2</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>171</xnat:frames>
+<xnat:file label="DICOM" file_count="171" file_size="90474860" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/5/DICOM/scan_5_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1741869" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/5/SNAPSHOTS/5_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:23:37</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.4453125" y="0.4453125" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>240.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">43.549</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="502" type="Other" UID="1.2.840.113654.2.45.6242.52378279653375603213032997390243221794" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03664</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526568" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/502/DICOM/scan_502_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/BJH/arc001/BJH_001_11132019/SCANS/502/SNAPSHOTS/502_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>08:23:02</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+</xnat:scan>
+</xnat:scans>
+<xnat:dcmPatientId>BJH_001_11132019</xnat:dcmPatientId>
+<xnat:dcmPatientName>BJH_001</xnat:dcmPatientName>
+<xnat:dcmPatientWeight>65.1</xnat:dcmPatientWeight>
+</xnat:experiment>
+<xnat:experiment ID="SNIPR_E03665" project="BJH" label="BJH_001_11122019" session_type="BJH" modality="CT" UID="1.2.840.113654.2.45.6242.41786130236813614531978884608083678057" xsi:type="xnat:ctSessionData">
+<xnat:date>2019-11-12</xnat:date>
+<xnat:time>23:26:41</xnat:time>
+<xnat:subject_ID>SNIPR_S01154</xnat:subject_ID>
+<xnat:prearchivePath>/data/snipr/prearchive/BJH/20201027_170436610/BJH_001_11122019</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.6242.294554781161289722852130053607494763926" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  0.6  T20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="528624" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="18204" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:26:50</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>2660.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>93.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>3.5999999999999996</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>100.0</xnat:tableSpeed>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>0.28786318508195136</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Z-Axial-Brain" UID="1.2.840.113654.2.45.6242.178960400485781916760959050876577737931" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>NCCT Head</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>57</xnat:frames>
+<xnat:file label="DICOM" file_count="57" file_size="30158236" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1795267" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="29884768" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/NIFTI/NIFTI_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PROCESSING" file_count="20" file_size="417313252" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/PROCESSING/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="MASKS" file_count="4" file_size="239630" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/MASKS/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NWUCALCULATION" file_count="9" file_size="56162113" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/2/NWUCALCULATION/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:27:49</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.431640625" y="0.431640625" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.6242.259082763884702667466773805949442902233" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   1.0  H60s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>170</xnat:frames>
+<xnat:file label="DICOM" file_count="170" file_size="89945766" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2733633" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:28:14</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.431640625" y="0.431640625" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H60s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="4" type="Z-Brain-Thin" UID="1.2.840.113654.2.45.6242.51946936528253806023507498980807253031" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   1.0  H20s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>170</xnat:frames>
+<xnat:file label="DICOM" file_count="170" file_size="89946106" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/4/DICOM/scan_4_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1659870" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/4/SNAPSHOTS/4_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:28:26</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.431640625" y="0.431640625" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H20s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="5" type="Other" UID="1.2.840.113654.2.45.6242.139435932050044557142872427131748258346" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   3.0  MPR  cor</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>74</xnat:frames>
+<xnat:file label="DICOM" file_count="74" file_size="63026232" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/5/DICOM/scan_5_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="3028907" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/5/SNAPSHOTS/5_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:28:43</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.330078125" y="0.33010882708585" z="3.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="827" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="6" type="Other" UID="1.2.840.113654.2.45.6242.182865610968973396707754725551646373429" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   3.0  MPR  sag</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>92</xnat:frames>
+<xnat:file label="DICOM" file_count="92" file_size="62909140" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/6/DICOM/scan_6_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2460365" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/6/SNAPSHOTS/6_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:30:03</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.330078125" y="0.33031674208145" z="3.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="663" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>193.0</xnat:xrayTubeCurrent>
+<xnat:exposure>241.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>34.690933993485345</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="7" type="Other" UID="1.2.840.113654.2.45.6242.234125679081766822687739410263727525758" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head_Spiral   3.0  MPR  ax</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>57</xnat:frames>
+<xnat:file label="DICOM" file_count="57" file_size="37517844" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/7/DICOM/scan_7_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2345905" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/7/SNAPSHOTS/7_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:30:27</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.427734375" y="0.42789968652038" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="638" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>22.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>J40s\2</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>30.7</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>30.7</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>0.8</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="Z_EC">37.0769</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="8" type="Other" UID="1.2.840.113654.2.45.6242.18160513890421307078628163622461213212" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>VPCT  PERFUSION  10.0  H20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>770</xnat:frames>
+<xnat:file label="DICOM" file_count="770" file_size="407402114" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/8/DICOM/scan_8_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/8/SNAPSHOTS/8_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:39:21</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.419921875" y="0.419921875" z="10.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>80.0</xnat:kvp>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>600.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>334.0</xnat:xrayTubeCurrent>
+<xnat:exposure>200.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>26.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>1.2</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:pitchFactor>0.5</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>7.394268061106233</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="9" type="Other" UID="1.2.840.113654.2.45.6242.34795701025085277524694701687587754861" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  0.6  T20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="528626" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/9/DICOM/scan_9_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:41:23</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>38</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>4203.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>151.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>3.5999999999999996</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>100.0</xnat:tableSpeed>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>0.28786318508195136</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="12" type="Other" UID="1.2.840.113654.2.45.6242.175064299247817338115059349067212355727" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Monitoring  10.0  B20s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>4</xnat:frames>
+<xnat:file label="DICOM" file_count="4" file_size="2116152" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/12/DICOM/scan_12_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:42:57</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.390625" y="0.390625" z="10.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 MON</xnat:imageType>
+<xnat:options>XOP\DSEQ\0001\CONT\RSER000001\RIMA000030\A4TP000000MS00</xnat:options>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>120.0</xnat:xrayTubeCurrent>
+<xnat:exposure>60.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>14.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20s</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>10.0</xnat:single>
+<xnat:total>10.0</xnat:total>
+</xnat:collimationWidth>
+<xnat:pitchFactor>0.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="NONE">0.0</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>3.55880518234005</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="13" type="Other" UID="1.2.840.113654.2.45.6242.54510259007505209331112428525267816592" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>CTA HeadNeck  1.0  B20f</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>763</xnat:frames>
+<xnat:file label="DICOM" file_count="763" file_size="403777730" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/13/DICOM/scan_13_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:43:32</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.482421875" y="0.482421875" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="15" type="Other" UID="1.2.840.113654.2.45.6242.33795833539736802421418808859824669976" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>AXIAL MIP</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>78</xnat:frames>
+<xnat:file label="DICOM" file_count="78" file_size="54136804" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/15/DICOM/scan_15_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:44:41</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.4665676077266" y="0.466796875" z="30.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="673"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MIP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="16" type="Other" UID="1.2.840.113654.2.45.6242.85350653519621369663372270499720039260" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>SAGITTAL MIP</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>48</xnat:frames>
+<xnat:file label="DICOM" file_count="48" file_size="31151278" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/16/DICOM/scan_16_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:45:16</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.61367249602544" y="0.61328125" z="30.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="629"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MIP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>357.0</xnat:xrayTubeCurrent>
+<xnat:exposure>178.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>7.02576</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="17" type="Other" UID="1.2.840.113654.2.45.6242.160105121446636341558646112095559902921" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>CTAHeadNeck  2.0  MPR  cor</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>158</xnat:frames>
+<xnat:file label="DICOM" file_count="158" file_size="134576608" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/17/DICOM/scan_17_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:45:26</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.46674727932285" y="0.466796875" z="2.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="827"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>357.0</xnat:xrayTubeCurrent>
+<xnat:exposure>178.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>7.02576</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="18" type="Other" UID="1.2.840.113654.2.45.6242.230414329951656290025687586622742102182" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>CTAHeadNeck  2.0  MPR  sag</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>120</xnat:frames>
+<xnat:file label="DICOM" file_count="120" file_size="77879906" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/18/DICOM/scan_18_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:45:31</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.61367249602544" y="0.61328125" z="2.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="629"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MPR</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>357.0</xnat:xrayTubeCurrent>
+<xnat:exposure>178.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>7.02576</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="19" type="Other" UID="1.2.840.113654.2.45.6242.335997896856530506116179676749598056706" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>CORONAL  MIP</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>63</xnat:frames>
+<xnat:file label="DICOM" file_count="63" file_size="53659360" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/19/DICOM/scan_19_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:53:13</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.46674727932285" y="0.466796875" z="30.0"/>
+<xnat:orientation>Cor</xnat:orientation>
+<xnat:fov x="512" y="827"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>DERIVED\PRIMARY\AXIAL\CT_SOM5 MIP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>357.0</xnat:xrayTubeCurrent>
+<xnat:exposure>178.0</xnat:exposure>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B20f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+<xnat:ctDIvol>7.02576</xnat:ctDIvol>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="20" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.6242.207478359896857674841355641502799032504" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>BONE AXIAL</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>545</xnat:frames>
+<xnat:file label="DICOM" file_count="545" file_size="288400950" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/20/DICOM/scan_20_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:53:36</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.62109375" y="0.62109375" z="1.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>100.0</xnat:kvp>
+<xnat:acquisitionNumber>45</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1085.6</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>595.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>219.5</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>500.0</xnat:exposureTime>
+<xnat:filter>FLAT</xnat:filter>
+<xnat:generatorPower>40.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>B70f</xnat:convolutionKernel>
+<xnat:collimationWidth>
+<xnat:single>0.6</xnat:single>
+<xnat:total>38.4</xnat:total>
+</xnat:collimationWidth>
+<xnat:tableSpeed>76.8</xnat:tableSpeed>
+<xnat:tableFeedPerRotation>38.4</xnat:tableFeedPerRotation>
+<xnat:pitchFactor>1.0</xnat:pitchFactor>
+<xnat:estimatedDoseSaving modulation="XYZ_EC">37.3846</xnat:estimatedDoseSaving>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="502" type="Other" UID="1.2.840.113654.2.45.6242.205215786984444696218323359119082899077" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="SOMATOM Definition AS+"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526542" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/502/DICOM/scan_502_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:53:48</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="507" type="Other" UID="1.2.840.113654.2.45.6242.102641985559059709064142905904129180518" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>CTA HeadNeck  1.0  B20f</xnat:series_description>
+<xnat:scanner manufacturer="Vital Images, Inc." model="Vitrea"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="202" file_size="571408444" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/507/DICOM/scan_507_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>10:02:05</xnat:startTime>
+<xnat:start_date>2019-11-13</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="801" type="Other" UID="1.2.840.113654.2.45.6242.41047494669007596333743553891987918280" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID CT-P Summary</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="9" file_size="36567168" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/801/DICOM/scan_801_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:43:00</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="811" type="Other" UID="1.2.840.113654.2.45.6242.277251853528022346184521078581671858542" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID tsMIP AIF/VOF Location</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="14" file_size="2784516" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/811/DICOM/scan_811_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:43:00</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="831" type="Other" UID="1.2.840.113654.2.45.6242.287364548425121069167569123533652891210" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID Perfusion Parameter Maps Colored</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="44" file_size="9765444" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/831/DICOM/scan_831_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:43:00</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="842" type="Other" UID="1.2.840.113654.2.45.6242.162141403641778468345524835681594799716" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID AIF/VOF Location</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="11" file_size="2187746" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/842/DICOM/scan_842_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:43:00</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="1301" type="Other" UID="1.2.840.113654.2.45.6242.113462120603312906518798203629301621078" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID Angiography Summary Assessment</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="6" file_size="4325772" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/1301/DICOM/scan_1301_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:46:33</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="1302" type="Other" UID="1.2.840.113654.2.45.6242.164674786354910791049653281732678745618" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID Angio Rendering MIP rotZ LH</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="108" file_size="75228490" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/1302/DICOM/scan_1302_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:46:33</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+<xnat:scan ID="1303" type="Other" UID="1.2.840.113654.2.45.6242.213735167986868574048720919987994268334" project="BJH" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR_E03665</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>RAPID Angio Rendering MIP rotX</xnat:series_description>
+<xnat:scanner manufacturer="ISCHEMAVIEW" model="RAPID"/>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="36" file_size="25076012" URI="/data/snipr/archive/BJH/arc001/BJH_001_11122019/SCANS/1303/DICOM/scan_1303_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>23:46:33</xnat:startTime>
+<xnat:start_date>2019-11-12</xnat:start_date>
+</xnat:scan>
+</xnat:scans>
+<xnat:dcmPatientId>BJH_001_11122019</xnat:dcmPatientId>
+<xnat:dcmPatientName>BJH_001</xnat:dcmPatientName>
+<xnat:dcmPatientWeight>69.536</xnat:dcmPatientWeight>
+</xnat:experiment>
+</xnat:experiments>
+</xnat:Subject>
