@@ -43,7 +43,7 @@ for root, dirs, files in os.walk(root_dir, topdown=False):
     for dir_name in dirs:
         
         # check if the directory name contains "SNIPR_"
-        if "SNIPR_" in dir_name:
+        if "SNIPR02_" in dir_name:
             
             # join the root directory with the directory name to create the full path
             dir_path = os.path.join(root, dir_name)
