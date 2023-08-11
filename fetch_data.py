@@ -12,7 +12,7 @@ from xnatSession import XnatSession
 import requests
 
 # global variables
-XNAT_HOST = 'https://snipr-dev-test1.nrg.wustl.edu'
+XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
 XNAT_USER = 'autumnxu'
 XNAT_PASS = 'abc123'
 
@@ -55,6 +55,7 @@ def get_resourcefiles_metadata_as_csv(URI,resource_dir):
     if resource_dir == 'NWUCALCULATION':
         uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('.csv')]
         if uri_temp:
+            print("ever ever here???")
             full_uri = uri_temp[0]
     elif resource_dir == 'DICOM' and metadata_masks[0]:
         full_uri = metadata_masks[0]['URI']
@@ -349,7 +350,7 @@ def upload_xml(xml):
 
     url = "{}/xapi/archive/upload/xml".format(XNAT_HOST)
     print('unpload_xml() -- is it None?', xml)
-    xml_file_path = './'+xml
+    xml_file_path = './'+xml # './08_10_23_13_32_36.xml'
     with open(xml_file_path, 'rb') as xml_file:
         response = requests.post(url, auth=(XNAT_USER, XNAT_PASS), files={'item': xml_file})
         try:
@@ -406,6 +407,44 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
 )
 '''
     
+def find_proper_subject_sessions():
+
+    print("executing tasks in find_proper_subject_sessions")
+    subject_id_url = '/data/subjects'
+    subject_to_sesions = fetch_subjectid(subject_id_url)
+    #print("how many subjects?", len(subject_ids))
+    print(subject_to_sesions)
+    useful_subject_to_session = {}
+    xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
+    for subject, sessions in subject_to_sesions.items():
+        for session_id in sessions:
+            for number in range(1, 11):
+                url = '/data/experiments/'+session_id+'/scans/'+str(number)+'/resources/NWUCALCULATION/files?format=json'
+                xnatSession.renew_httpsession()
+                response = xnatSession.httpsess.get(xnatSession.host + url)
+                json_res = None
+                try:
+                    json_res = response.json()
+                    metadata_masks=json_res['ResultSet']['Result']
+                    uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('.csv')]
+                    if uri_temp:
+                        print("ever ever ever here?")
+                        if subject in useful_subject_to_session:
+                            # Append the new value to the existing list
+                            useful_subject_to_session[subject].append(session_id)
+                        else:
+                            # If the key doesn't exist, create it with a new list containing the value
+                            useful_subject_to_session[subject] = [session_id]
+                except json.JSONDecodeError as e:
+                    #print("following url does not have resource folder", xnatSession.host+url)
+                    #print(f"JSONDecodeError: {e}")
+                    continue
+                
+    xnatSession.close_httpsession()
+    print("about to return")
+    # below currently prints empty dictionary
+    print(useful_subject_to_session)
+    return useful_subject_to_session
     
 
 def test_main():
@@ -464,8 +503,8 @@ def test_main():
     
 # parse info here....
 def one_sample_test():
-    sessionId = 'SNIPR_E03665' #SNIPR_E03517 CT session associated with subject 001
-    subject_id = 'SNIPR_S01154' # SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
+    sessionId = 'SNIPR02_E00166' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
+    subject_id = 'SNIPR02_S00034' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
     URI = '/data/experiments/'+sessionId+'/scans/2'
     resource_dir = 'NWUCALCULATION' # 'DICOM' or 'NWUCALCULATION'
     resource_dirs = ['NWUCALCULATION', 'DICOM']
@@ -488,5 +527,5 @@ def one_sample_test():
     upload_xml(file_name)
 if __name__ == '__main__':
     #test_main()
-    one_sample_test()
-    
+    # one_sample_test()
+    find_proper_subject_sessions()

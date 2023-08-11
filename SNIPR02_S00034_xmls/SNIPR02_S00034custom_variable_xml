@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xnat:Subject ID="SNIPR02_S00034" project="WashU" label="WUSTL_002" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:sni="http://nrg.wustl.edu/sni" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow https://snipr.wustl.edu/schemas/workflow.xsd http://nrg.wustl.edu/catalog https://snipr.wustl.edu/schemas/catalog.xsd http://nrg.wustl.edu/pipe https://snipr.wustl.edu/schemas/repository.xsd http://nrg.wustl.edu/rad https://snipr.wustl.edu/schemas/radRead.xsd http://nrg.wustl.edu/workshop https://snipr.wustl.edu/schemas/workshop.xsd http://nrg.wustl.edu/scr https://snipr.wustl.edu/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc https://snipr.wustl.edu/schemas/project.xsd http://icr.ac.uk/icr https://snipr.wustl.edu/schemas/roi.xsd http://nrg.wustl.edu/val https://snipr.wustl.edu/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat https://snipr.wustl.edu/schemas/xnat.xsd http://nrg.wustl.edu/sni https://snipr.wustl.edu/schemas/sniData.xsd http://nrg.wustl.edu/xnat_assessments https://snipr.wustl.edu/schemas/assessments.xsd http://www.nbirn.net/prov https://snipr.wustl.edu/schemas/birnprov.xsd http://nrg.wustl.edu/security https://snipr.wustl.edu/schemas/security.xsd">
+<xnat:demographics xsi:type="xnat:demographicData">
+<xnat:age>90</xnat:age>
+<xnat:gender>male</xnat:gender>
+<xnat:race>Caucasian/White</xnat:race>
+</xnat:demographics>
+<xnat:fields>
+<xnat:field name="hemorrhagic_transformation">HI-1</xnat:field>
+<xnat:field name="stroke_territory_aca_involved"/>
+<xnat:field name="global_cerebral_edema_for_sah"/>
+<xnat:field name="stroke_side">Right</xnat:field>
+<xnat:field name="cerebral_edema_grading_for_ischemic_stroke">2 = Edema More than 2/3 Hemisphere, no MLS</xnat:field>
+<xnat:field name="stroke_territory_pca_involved"/>
+<xnat:field name="stroke_territory_mca_involved">Acute</xnat:field>
+<xnat:field name="lesion_location">Both (Cortical/Subcortical)</xnat:field>
+<xnat:field name="disease_type">Ischemic Stroke</xnat:field>
+<xnat:field name="intraventricular_hemorrhage_for_ich_and_sah"/>
+<xnat:field name="stroke_onset_datetime">2012-04-21 17:45:00</xnat:field>
+<xnat:field name="image_status">SS on FU</xnat:field>
+<xnat:field name="lvo_location">Unable to assess</xnat:field>
+<xnat:field name="hemispheric">Yes</xnat:field>
+<xnat:field name="mca_territory_involved">Yes</xnat:field>
+<xnat:field name="aca_territory_involved">No</xnat:field>
+<xnat:field name="pca_territory_involved">No</xnat:field>
+<xnat:field name="cerebral_edema_grade">3.0</xnat:field>
+<xnat:field name="old_stroke_present">No</xnat:field>
+<xnat:field name="old_stroke_location">nan</xnat:field>
+<xnat:field name="lacunar_stroke">No</xnat:field>
+<xnat:field name="cerebellar_stroke">No</xnat:field>
+<xnat:field name="brainstem_involved">No</xnat:field>
+<xnat:field name="wmd_present">nan</xnat:field>
+<xnat:field name="wmd_severity">nan</xnat:field>
+<xnat:field name="ivt">Yes</xnat:field>
+<xnat:field name="et">No</xnat:field>
+<xnat:field name="lvo">Unknown</xnat:field>
+<xnat:field name="toast">Large Artery Athero</xnat:field>
+<xnat:field name="proximal_ica_tandem_occlusion">nan</xnat:field>
+<xnat:field name="dhc">nan</xnat:field>
+<xnat:field name="needs_review">nan</xnat:field>
+<xnat:field name="CT Sessions">nan</xnat:field>
+<xnat:field name="tici_score">nan</xnat:field>
+<xnat:field name="nihss_bl">15.0</xnat:field>
+<xnat:field name="nihss_24h">24.0</xnat:field>
+<xnat:field name="cohort">WUSTL1-2</xnat:field>
+<xnat:field name="age">90.0</xnat:field>
+<xnat:field name="gender">Male</xnat:field>
+<xnat:field name="race">Caucasian/White</xnat:field>
+</xnat:fields>
+<xnat:experiments>
+<xnat:experiment ID="SNIPR02_E00165" project="WashU" label="WUSTL_002_20120422201951" session_type="WashU" modality="CT" UID="1.2.840.113654.2.45.5943.107570674222773868839164076924428796433" xsi:type="xnat:ctSessionData">
+<xnat:date>2012-04-22</xnat:date>
+<xnat:time>20:19:51</xnat:time>
+<xnat:resources>
+<xnat:resource label="NIFTI_LOCATION" file_count="2" file_size="374" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/RESOURCES/NIFTI_LOCATION/NIFTI_LOCATION_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+</xnat:resources>
+<xnat:fields>
+<xnat:field name="craniectomy">No</xnat:field>
+<xnat:field name="infarct_present">Yes</xnat:field>
+<xnat:field name="hemorrhagic_transformation">None</xnat:field>
+<xnat:field name="hyperdense_vessel_sign"/>
+<xnat:field name="aspects_score"/>
+<xnat:field name="midline_shift"/>
+<xnat:field name="old_stroke_present"/>
+<xnat:field name="ventriculostomy">No</xnat:field>
+</xnat:fields>
+<xnat:subject_ID>SNIPR02_S00034</xnat:subject_ID>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 64">sctd</xnat:scanner>
+<xnat:prearchivePath>/data/snipr/prearchive/WashU/20190219_112617172/WUSTL_002_04222012</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.5943.186738548359979351411839447018028736509" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00165</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  0.6  T20s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 64">sctd</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>2</xnat:frames>
+<xnat:file label="DICOM" file_count="2" file_size="1054284" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="27365" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>20:19:54</xnat:startTime>
+<xnat:start_date>2012-04-22</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="1.0" y="1.0" z="0.6"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>214.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>2333.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>81.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Z-Axial-Brain" UID="1.2.840.113654.2.45.5943.202999974466850065535850465367286673390" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00165</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head  5.0  H31s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 64">sctd</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>35</xnat:frames>
+<xnat:file label="DICOM" file_count="35" file_size="18447428" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="864391" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="18350432" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/2/NIFTI/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PREPROCESS_SEGM" file_count="1" file_size="39" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/2/PREPROCESS_SEGM/PREPROCESS_SEGM_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>20:20:58</xnat:startTime>
+<xnat:start_date>2012-04-22</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.48828125" y="0.48828125" z="5.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>214.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>224.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>26.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H31s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.5943.29764534604425460312739142560082903495" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00165</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head  3.0  H60s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 64">sctd</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>58</xnat:frames>
+<xnat:file label="DICOM" file_count="58" file_size="30570028" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2593448" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>20:21:21</xnat:startTime>
+<xnat:start_date>2012-04-22</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.48828125" y="0.48828125" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>214.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>224.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>26.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H60s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="501" type="Other" UID="1.2.840.113654.2.45.5943.215218482630804741892325685245163319413" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00165</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 64">sctd</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526584" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/501/DICOM/scan_501_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120422201951/SCANS/501/SNAPSHOTS/501_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>20:24:31</xnat:startTime>
+<xnat:start_date>2012-04-22</xnat:start_date>
+</xnat:scan>
+</xnat:scans>
+<xnat:assessors>
+<xnat:assessor ID="WUSTL_002_20120422201951_S2_SE_V01" project="WashU" xsi:type="sni:sniData">
+<xnat:date>2020-06-11</xnat:date>
+<xnat:time>14:44:20</xnat:time>
+<xnat:imageSession_ID>SNIPR02_E00165</xnat:imageSession_ID>
+<sni:Site>WUSTL</sni:Site>
+<sni:Subject_ID>2</sni:Subject_ID>
+<sni:Scan_date>2012-04-22</sni:Scan_date>
+<sni:Scan_time>20:19:51</sni:Scan_time>
+<sni:Baseline>NO</sni:Baseline>
+<sni:Time_from_bl_hr>25.96</sni:Time_from_bl_hr>
+<sni:Sequence>Z-Axial-Brain</sni:Sequence>
+<sni:CT_series_description>Head  5.0  H31s</sni:CT_series_description>
+<sni:Tilt>NO</sni:Tilt>
+<sni:X_dimension>512</sni:X_dimension>
+<sni:Y_dimension>512</sni:Y_dimension>
+<sni:Slices_number>35</sni:Slices_number>
+<sni:DICOM_pixel_size_x>0.488</sni:DICOM_pixel_size_x>
+<sni:DICOM_pixel_size_y>0.488</sni:DICOM_pixel_size_y>
+<sni:DICOM_slice_thickness>5.0</sni:DICOM_slice_thickness>
+<sni:NIFTI_pixel_size_x>0.488</sni:NIFTI_pixel_size_x>
+<sni:NIFTI_pixel_size_y>0.488</sni:NIFTI_pixel_size_y>
+<sni:NIFTI_slice_thickness>5.0</sni:NIFTI_slice_thickness>
+<sni:Z_axial_brain_scans>1</sni:Z_axial_brain_scans>
+<sni:Z_brain_thin_scans>0</sni:Z_brain_thin_scans>
+<sni:Selected_scan_number>2</sni:Selected_scan_number>
+<sni:Coverage>17.5</sni:Coverage>
+</xnat:assessor>
+</xnat:assessors>
+<xnat:dcmPatientId>WUSTL_002_04222012</xnat:dcmPatientId>
+<xnat:dcmPatientName>WUSTL_002</xnat:dcmPatientName>
+</xnat:experiment>
+<xnat:experiment ID="SNIPR02_E00166" project="WashU" label="WUSTL_002_20120421182223" session_type="WashU" modality="CT" UID="1.2.840.113654.2.45.5943.280621485532782977864291104387225047500" xsi:type="xnat:ctSessionData">
+<xnat:date>2012-04-21</xnat:date>
+<xnat:time>18:22:23</xnat:time>
+<xnat:resources>
+<xnat:resource label="NIFTI_LOCATION" file_count="2" file_size="374" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/RESOURCES/NIFTI_LOCATION/NIFTI_LOCATION_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+</xnat:resources>
+<xnat:fields>
+<xnat:field name="craniectomy"/>
+<xnat:field name="infarct_present"/>
+<xnat:field name="hemorrhagic_transformation"/>
+<xnat:field name="hyperdense_vessel_sign"/>
+<xnat:field name="aspects_score"/>
+<xnat:field name="midline_shift"/>
+<xnat:field name="old_stroke_present"/>
+<xnat:field name="ventriculostomy"/>
+</xnat:fields>
+<xnat:subject_ID>SNIPR02_S00034</xnat:subject_ID>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation Open">EDCT2</xnat:scanner>
+<xnat:prearchivePath>/data/snipr/prearchive/WashU/20190219_112612954/WUSTL_002_04212012</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.5943.210347824469665327218613642347670832870" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00166</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  1.2  T20s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation Open">EDCT2</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>2</xnat:frames>
+<xnat:file label="DICOM" file_count="2" file_size="1053804" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="27263" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>18:22:25</xnat:startTime>
+<xnat:start_date>2012-04-21</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="1.0" y="1.0" z="1.2"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>202.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>2456.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>35.0</xnat:xrayTubeCurrent>
+<xnat:exposure>85.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>4.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Z-Axial-Brain" UID="1.2.840.113654.2.45.5943.226858431275250537779812234034564203939" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00166</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head  5.0  H31s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation Open">EDCT2</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>37</xnat:frames>
+<xnat:file label="DICOM" file_count="37" file_size="19498396" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1225893" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="19399008" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/2/NIFTI/2_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PREPROCESS_SEGM" file_count="1" file_size="39" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/2/PREPROCESS_SEGM/PREPROCESS_SEGM_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>18:23:28</xnat:startTime>
+<xnat:start_date>2012-04-21</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.494140625" y="0.494140625" z="5.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>202.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>378.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>45.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H31s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.5943.319883924648612156311753904704646717587" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00166</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Head  3.0  H60s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation Open">EDCT2</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>61</xnat:frames>
+<xnat:file label="DICOM" file_count="61" file_size="32146012" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2455023" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>18:23:46</xnat:startTime>
+<xnat:start_date>2012-04-21</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.494140625" y="0.494140625" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>202.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>378.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>45.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H60s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="501" type="Other" UID="1.2.840.113654.2.45.5943.312309653334104507745225843888149119993" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00166</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation Open">EDCT2</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526496" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/501/DICOM/scan_501_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_20120421182223/SCANS/501/SNAPSHOTS/501_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>18:24:10</xnat:startTime>
+<xnat:start_date>2012-04-21</xnat:start_date>
+</xnat:scan>
+</xnat:scans>
+<xnat:assessors>
+<xnat:assessor ID="WUSTL_002_20120421182223_S2_SE_V01" project="WashU" xsi:type="sni:sniData">
+<xnat:date>2020-06-11</xnat:date>
+<xnat:time>14:58:00</xnat:time>
+<xnat:imageSession_ID>SNIPR02_E00166</xnat:imageSession_ID>
+<sni:Site>WUSTL</sni:Site>
+<sni:Subject_ID>2</sni:Subject_ID>
+<sni:Scan_date>2012-04-21</sni:Scan_date>
+<sni:Scan_time>18:22:23</sni:Scan_time>
+<sni:Baseline>YES</sni:Baseline>
+<sni:Time_from_bl_hr>0.0</sni:Time_from_bl_hr>
+<sni:Sequence>Z-Axial-Brain</sni:Sequence>
+<sni:CT_series_description>Head  5.0  H31s</sni:CT_series_description>
+<sni:Tilt>NO</sni:Tilt>
+<sni:X_dimension>512</sni:X_dimension>
+<sni:Y_dimension>512</sni:Y_dimension>
+<sni:Slices_number>37</sni:Slices_number>
+<sni:DICOM_pixel_size_x>0.494</sni:DICOM_pixel_size_x>
+<sni:DICOM_pixel_size_y>0.494</sni:DICOM_pixel_size_y>
+<sni:DICOM_slice_thickness>5.0</sni:DICOM_slice_thickness>
+<sni:NIFTI_pixel_size_x>0.494</sni:NIFTI_pixel_size_x>
+<sni:NIFTI_pixel_size_y>0.494</sni:NIFTI_pixel_size_y>
+<sni:NIFTI_slice_thickness>5.0</sni:NIFTI_slice_thickness>
+<sni:Z_axial_brain_scans>1</sni:Z_axial_brain_scans>
+<sni:Z_brain_thin_scans>0</sni:Z_brain_thin_scans>
+<sni:Selected_scan_number>2</sni:Selected_scan_number>
+<sni:Coverage>18.5</sni:Coverage>
+</xnat:assessor>
+</xnat:assessors>
+<xnat:dcmPatientId>WUSTL_002_04212012</xnat:dcmPatientId>
+<xnat:dcmPatientName>WUSTL_002</xnat:dcmPatientName>
+</xnat:experiment>
+<xnat:experiment ID="SNIPR02_E00174" project="WashU" label="WUSTL_002_04242012" session_type="WashU" modality="CT" UID="1.2.840.113654.2.45.5943.149525105788616831018991338737878652436" xsi:type="xnat:ctSessionData">
+<xnat:date>2012-04-24</xnat:date>
+<xnat:time>09:32:30</xnat:time>
+<xnat:resources>
+<xnat:resource label="NIFTI_LOCATION" file_count="1" file_size="156" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/RESOURCES/NIFTI_LOCATION/NIFTI_LOCATION_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+</xnat:resources>
+<xnat:fields>
+<xnat:field name="craniectomy">No</xnat:field>
+<xnat:field name="infarct_present">Yes</xnat:field>
+<xnat:field name="hemorrhagic_transformation">None</xnat:field>
+<xnat:field name="hyperdense_vessel_sign"/>
+<xnat:field name="aspects_score"/>
+<xnat:field name="midline_shift"/>
+<xnat:field name="old_stroke_present">No</xnat:field>
+<xnat:field name="ventriculostomy">No</xnat:field>
+</xnat:fields>
+<xnat:subject_ID>SNIPR02_S00034</xnat:subject_ID>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 16">ct50090</xnat:scanner>
+<xnat:prearchivePath>/data/snipr/prearchive/WashU/20190219_112620917/WUSTL_002_04242012</xnat:prearchivePath>
+<xnat:scans>
+<xnat:scan ID="1" type="Other" UID="1.2.840.113654.2.45.5943.52972782708882827839605145412613537416" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00174</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Topogram  1.0  T20s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 16">ct50090</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>1</xnat:frames>
+<xnat:file label="DICOM" file_count="1" file_size="526986" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/1/DICOM/scan_1_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="18040" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/1/SNAPSHOTS/1_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>09:32:34</xnat:startTime>
+<xnat:start_date>2012-04-24</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="1.0" y="1.0" z="1.0"/>
+<xnat:orientation>Sag</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>1</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\LOCALIZER\CT_SOM5 TOP</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>147.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>2780.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>50.0</xnat:xrayTubeCurrent>
+<xnat:exposure>139.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>6.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>1.2</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>T20s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="2" type="Z-Axial-Brain" UID="1.2.840.113654.2.45.5943.59286576155316187073662937862280437204" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00174</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Spiral Head  5.0  H30s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 16">ct50090</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>39</xnat:frames>
+<xnat:file label="DICOM" file_count="39" file_size="20554622" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/2/DICOM/scan_2_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="1310281" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/2/SNAPSHOTS/2_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="NIFTI" file_count="1" file_size="20447584" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/2/NIFTI/NIFTI_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="PREPROCESS_SEGM" file_count="18" file_size="274506911" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/2/PREPROCESS_SEGM/PREPROCESS_SEGM_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="MASKS" file_count="5" file_size="5497162" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/2/MASKS/MASKS_catalog.xml" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>09:33:16</xnat:startTime>
+<xnat:start_date>2012-04-24</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.48046875" y="0.48046875" z="5.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>147.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>210.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>25.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H30s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="3" type="Z-Axial-Bone" UID="1.2.840.113654.2.45.5943.176485116701286525588074246277335269347" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00174</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Spiral Head  3.0  H60s</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 16">ct50090</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>65</xnat:frames>
+<xnat:file label="DICOM" file_count="65" file_size="34257974" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/3/DICOM/scan_3_catalog.xml" format="DICOM" content="RAW" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2504470" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/3/SNAPSHOTS/3_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>09:33:51</xnat:startTime>
+<xnat:start_date>2012-04-24</xnat:start_date>
+<xnat:parameters>
+<xnat:voxelRes x="0.48046875" y="0.48046875" z="3.0"/>
+<xnat:orientation>Tra</xnat:orientation>
+<xnat:fov x="512" y="512"/>
+<xnat:rescale>
+<xnat:intercept>-1024</xnat:intercept>
+<xnat:slope>1</xnat:slope>
+</xnat:rescale>
+<xnat:kvp>120.0</xnat:kvp>
+<xnat:acquisitionNumber>2</xnat:acquisitionNumber>
+<xnat:imageType>ORIGINAL\PRIMARY\AXIAL\CT_SOM5 SPI</xnat:imageType>
+<xnat:collectionDiameter>500.0</xnat:collectionDiameter>
+<xnat:distanceSourceToDetector>1040.0</xnat:distanceSourceToDetector>
+<xnat:distanceSourceToPatient>570.0</xnat:distanceSourceToPatient>
+<xnat:gantryTilt>0.0</xnat:gantryTilt>
+<xnat:tableHeight>147.0</xnat:tableHeight>
+<xnat:rotationDirection>CW</xnat:rotationDirection>
+<xnat:exposureTime>1000.0</xnat:exposureTime>
+<xnat:xrayTubeCurrent>210.0</xnat:xrayTubeCurrent>
+<xnat:exposure>280.0</xnat:exposure>
+<xnat:filter>0</xnat:filter>
+<xnat:generatorPower>25.0</xnat:generatorPower>
+<xnat:focalSpots>
+<xnat:focalSpot>0.7</xnat:focalSpot>
+</xnat:focalSpots>
+<xnat:convolutionKernel>H60s</xnat:convolutionKernel>
+</xnat:parameters>
+</xnat:scan>
+<xnat:scan ID="501" type="Other" UID="1.2.840.113654.2.45.5943.298374514822049251221562958092818066285" project="WashU" xsi:type="xnat:ctScanData">
+<xnat:image_session_ID>SNIPR02_E00174</xnat:image_session_ID>
+<xnat:quality>usable</xnat:quality>
+<xnat:series_description>Patient Protocol</xnat:series_description>
+<xnat:scanner manufacturer="SIEMENS" model="Sensation 16">ct50090</xnat:scanner>
+<xnat:modality>CT</xnat:modality>
+<xnat:frames>0</xnat:frames>
+<xnat:file label="secondary" file_count="1" file_size="526506" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/501/DICOM/scan_501_secondary_catalog.xml" format="DICOM" content="secondary" xsi:type="xnat:resourceCatalog"/>
+<xnat:file label="SNAPSHOTS" file_count="2" file_size="2254" URI="/data/snipr/archive/WashU/arc001/WUSTL_002_04242012/SCANS/501/SNAPSHOTS/501_catalog.xml" format="GIF" content="SNAPSHOTS" xsi:type="xnat:resourceCatalog"/>
+<xnat:startTime>09:39:04</xnat:startTime>
+<xnat:start_date>2012-04-24</xnat:start_date>
+</xnat:scan>
+</xnat:scans>
+<xnat:dcmPatientId>WUSTL_002_04242012</xnat:dcmPatientId>
+<xnat:dcmPatientName>WUSTL_002</xnat:dcmPatientName>
+</xnat:experiment>
+</xnat:experiments>
+</xnat:Subject>
