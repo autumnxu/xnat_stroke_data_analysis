@@ -483,65 +483,29 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
 '''
     
 def find_proper_subject_sessions():
-
     print("executing tasks in find_proper_subject_sessions")
-    subject_id_url = '/data/subjects'
-    subject_to_sesions = fetch_subjectid(subject_id_url)
-    #print("how many subjects?", len(subject_ids))
-    print(subject_to_sesions)
-    useful_subject_to_session = {}
-    #xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
-
     data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
     filtered_data = data[data['CSV_FILE_NUM'] > 0]
     # Extract the values from the 'ID' column
     session_ids = filtered_data['ID'].values
+    
+    subject_id_url = '/data/subjects'
+    subject_ids = fetch_subjectid(subject_id_url, True)
+    useful_subject_to_session = {}
+    for subject_id in subject_ids:
+        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
+        (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
+        if potential_session_ids == None:
+            continue
+        matching_values = list(set(potential_session_ids) & set(session_ids))
+        if matching_values:
+            useful_subject_to_session[subject_id] = matching_values
+    
+    print("useful_subject_to_session")
+    print(useful_subject_to_session)
+    with open('./useful_subject_to_session.json', "w") as json_file:
+        json.dump(useful_subject_to_session, json_file)
 
-    for subject, sessions in subject_to_sesions.items():
-        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject)
-        file_name = subject+'custom_variable_xml'
-        directory = subject+'_xmls'
-        Path('./'+directory).mkdir(parents=True, exist_ok=True)
-        download_resource_file(custom_variables_url, file_name, directory)
-        for session_id in session_ids:
-            res = grab_custom_variables(subject, session_id)
-            if res and subject in useful_subject_to_session:
-                # Append the new value to the existing list
-                useful_subject_to_session[subject].append(session_id)
-            elif res:
-                # If the key doesn't exist, create it with a new list containing the value
-                useful_subject_to_session[subject] = [session_id]   
-    '''
-        
-        for session_id in sessions:
-            for number in range(1, 11):
-                url = '/data/experiments/'+session_id+'/scans/201/resources/EDEMA_BIOMARKER/files?format=json'
-                xnatSession.renew_httpsession()
-                response = xnatSession.httpsess.get(xnatSession.host + url)
-                json_res = None
-                try:
-                    json_res = response.json()
-                    metadata_masks=json_res['ResultSet']['Result']
-                    uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('.csv')]
-                    if uri_temp:
-                        print("ever ever ever here?", subject, sessions, number)
-                        if subject in useful_subject_to_session:
-                            # Append the new value to the existing list
-                            useful_subject_to_session[subject].append(session_id)
-                        else:
-                            # If the key doesn't exist, create it with a new list containing the value
-                            useful_subject_to_session[subject] = [session_id]
-                except json.JSONDecodeError as e:
-                    #print("following url does not have resource folder", xnatSession.host+url)
-                    #print(f"JSONDecodeError: {e}")
-                    continue
-     '''
-               
-    #xnatSession.close_httpsession()
-    print("about to return")
-    # below currently prints empty dictionary
-    with open("./useful_subject_to_session.json", "w") as outfile:
-        json.dump(useful_subject_to_session, outfile)
     return useful_subject_to_session
     
 
@@ -628,26 +592,4 @@ def one_sample_test():
 if __name__ == '__main__':
     #test_main()
     #one_sample_test()
-    #find_proper_subject_sessions()
-    # below code currently not for debugging
-    data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
-    filtered_data = data[data['CSV_FILE_NUM'] > 0]
-    # Extract the values from the 'ID' column
-    session_ids = filtered_data['ID'].values
-    
-    subject_id_url = '/data/subjects'
-    subject_ids = fetch_subjectid(subject_id_url, True)
-    useful_subject_to_session = {}
-    for subject_id in subject_ids:
-        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
-        (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
-        if potential_session_ids == None:
-            continue
-        matching_values = list(set(potential_session_ids) & set(session_ids))
-        if matching_values:
-            useful_subject_to_session[subject_id] = matching_values
-    
-    print("useful_subject_to_session")
-    print(useful_subject_to_session)
-    with open('./useful_subject_to_session.json', "w") as json_file:
-        json.dump(useful_subject_to_session, json_file)
+    find_proper_subject_sessions()
