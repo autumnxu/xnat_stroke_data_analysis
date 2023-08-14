@@ -10,6 +10,7 @@ from datetime import datetime
 #from pyxnat import Interface # not needed since uploading xml worked
 from xnatSession import XnatSession
 import requests
+import xml.etree.ElementTree as ET # trying to not download xml but deal with the content right there
 
 # global variables
 XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
@@ -47,7 +48,9 @@ def get_resourcefiles_metadata_as_csv(URI,resource_dir):
         return None
     metadata_masks=json_res['ResultSet']['Result']
     jsonStr = json.dumps(metadata_masks)
-    
+    if resource_dir == "EDEMA_BIOMARKER":
+        print('debugging', url)
+        print(json_res['ResultSet'].keys())
     #full_uri = json.loads(jsonStr)[0]['URI']
     #here add checks for variable file type 
     #print('viewing structure')
@@ -56,6 +59,11 @@ def get_resourcefiles_metadata_as_csv(URI,resource_dir):
         uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('.csv')]
         if uri_temp:
             print("ever ever here???")
+            full_uri = uri_temp[0]
+    if resource_dir == 'EDEMA_BIOMARKER':   
+        print('finally here????')     
+        uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('columndropped.csv')]
+        if uri_temp:
             full_uri = uri_temp[0]
     elif resource_dir == 'DICOM' and metadata_masks[0]:
         full_uri = metadata_masks[0]['URI']
@@ -80,6 +88,64 @@ def download_resource_file(url, file_name, directory):
             if chunk:  # filter out keep-alive new chunks
                 f.write(chunk)
     xnatSession.close_httpsession()
+    
+'''
+functionality: build partial XML based on custom variables
+-> collect Stroke_Time, Stroke_Date, Scan_Quality, Cerebral_Edema_Grade
+input: the url is specific to subject_id
+'''
+def view_resources(url, resource_dir):
+    xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
+    xnatSession.renew_httpsession()
+    response = xnatSession.httpsess.get(xnatSession.host + url)
+    xnatSession.close_httpsession()
+    namespace_dict = {
+        'xnat': 'http://nrg.wustl.edu/xnat',
+        'xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+    }
+    custom_variables_dict = {}
+    potential_session_ids = []
+    if response.status_code == 200:
+        xml_content = response.content  # Get the raw XML content
+        root = ET.fromstring(xml_content)
+        fields_element = root.find('.//xnat:fields', namespaces=namespace_dict)
+        if fields_element == None:
+            return (None, None)
+        stroke_onset_date_element = fields_element.find('.//xnat:field[@name="stroke_onset_date"]', namespaces=namespace_dict)
+        stroke_onset_time_element = fields_element.find('.//xnat:field[@name="stroke_onset_time"]', namespaces=namespace_dict)
+        long_cerebral_edema_grade = fields_element.find('.//xnat:field[@name="cerebral_edema_grading_for_ischemic_stroke"]', namespaces=namespace_dict)
+        scan_quality = None
+        # the above three fields need .text to extract value
+        for scan_element in root.findall('.//xnat:scan', namespaces=namespace_dict):
+            image_session_id = scan_element.findtext('xnat:image_session_ID', namespaces=namespace_dict)
+            scan_type = scan_element.get('type')
+            if scan_type == 'Z Axial Brain':
+                scan_quality = scan_element.findtext('xnat:quality', namespaces=namespace_dict)
+                # this is direct string
+                potential_session_ids.append(image_session_id)
+                break
+        if stroke_onset_date_element is not None and stroke_onset_time_element is not None and long_cerebral_edema_grade is not None and scan_quality:
+            custom_variables_dict['Stroke_Time'] = stroke_onset_time_element.text
+            custom_variables_dict['Stroke_Date'] = stroke_onset_date_element.text
+            custom_variables_dict['Cerebral_Edema_Grade'] = long_cerebral_edema_grade.text
+            custom_variables_dict['Scan_Quality'] = scan_quality
+            
+    return (custom_variables_dict, potential_session_ids)
+    '''
+    scans_element = root.find('.//xnat:scans', namespaces=namespace_dict)
+    matching_scan_element = scans_element.find('.//xnat:scan[xnat:image_session_ID="{}"]'.format(session_id), namespaces=namespace_dict)
+
+    if matching_scan_element:
+        quality = matching_scan_element.findtext('xnat:quality', namespaces=namespace_dict)
+
+    #  stroke_onset_date_element.text has the actual info
+    
+    for item_element in root.findall('item'):
+        name = item_element.get('name')
+        value = item_element.get('value')
+    '''
+        
+
 
 # bug, what if time points cross day(s)
 def time_diff(stroke_time, scan_time, stroke_date, scan_date):
@@ -100,10 +166,14 @@ if any of the fields can not be read, return None,
 since the uploading of xml won't work
 '''
 def fill_info(sessionId, subject_id):
+    dicom_dict = None
+    '''
     dicom_dict = grab_dicom_info(sessionId)
     nwu_dict = grab_nwu_info(sessionId)
     if not nwu_dict:
         return (None, None)
+    '''
+    
     cutom_variables_dict = grab_custom_variables(subject_id, sessionId)
     
     if dicom_dict is None or nwu_dict is None or cutom_variables_dict is None:
@@ -202,34 +272,37 @@ def grab_custom_variables(subject_id, session_id):
     custom_variables_dict = {}
 
     dict_of_xml = xmltodict.parse(xml_read)
-    list_of_dict = dict_of_xml['xnat:Subject']['xnat:fields']['xnat:field']
-    value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
-    padded = value_of_interest[0]+':00'
+    list_of_dict = None
+    try:
+        list_of_dict = dict_of_xml['xnat:Subject']['xnat:fields']['xnat:field'] 
+        cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grade'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
+        cerebral_stroke = cerebral_stroke[0]
+        value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
+        padded = value_of_interest[0]+':00'
+        stroke_date = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_date']      
+        stroke_date = stroke_date[0]
+        # mm/dd/yyyy -> yyyy-mm-dd
+        padded_date = stroke_date[6:]+'-'+stroke_date[:2]+'-'+stroke_date[3:5]
+        custom_variables_dict['Stroke_Time'] = padded
+        custom_variables_dict['Stroke_Date'] = padded_date
+        custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
+        return session_id
+        
+        usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
 
-    cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'Cerebral_Edema_Grading_for_Ischemic_Stroke']
 
-    stroke_date = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_date']
-    
-    cerebral_stroke = cerebral_stroke[0]
-    stroke_date = stroke_date[0]
-    # mm/dd/yyyy -> yyyy-mm-dd
-    padded_date = stroke_date[6:]+'-'+stroke_date[:2]+'-'+stroke_date[3:5]
-    custom_variables_dict['Stroke_Time'] = padded
-    custom_variables_dict['Stroke_Date'] = padded_date
-    custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
-    usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
+        list_of_dict = dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
+        scan_info = [dict for dict in list_of_dict if dict['@ID'] == session_id]
+        tmp = [d for d in scan_info if "xnat:scans" in d]
+        tmp = tmp[0]
+        tmp = tmp['xnat:scans']['xnat:scan']
+        tmp = next((d for d in tmp if d.get("@type") == "Z-Axial-Brain"), None)
+        usability = tmp['xnat:quality']
 
-
-    list_of_dict = dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
-    scan_info = [dict for dict in list_of_dict if dict['@ID'] == session_id]
-    tmp = [d for d in scan_info if "xnat:scans" in d]
-    tmp = tmp[0]
-    tmp = tmp['xnat:scans']['xnat:scan']
-    tmp = next((d for d in tmp if d.get("@type") == "Z-Axial-Brain"), None)
-    usability = tmp['xnat:quality']
-
-    custom_variables_dict['Scan_Quality'] = usability
-    print(custom_variables_dict)
+        custom_variables_dict['Scan_Quality'] = usability
+        print(custom_variables_dict)
+    except (KeyError, IndexError):
+        return None
     return custom_variables_dict
 
 '''
@@ -309,7 +382,7 @@ def fetch_sessionid(session_id_url):
     return session_id
 
 # either this is buggy or the above function is buggy
-def fetch_subjectid(subject_id_url):
+def fetch_subjectid(subject_id_url, just_ids):
     url = (subject_id_url+'/?format=json')
     print('fetch_sessionid -- full url:', url)
     xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
@@ -319,7 +392,9 @@ def fetch_subjectid(subject_id_url):
     json_res = response.json()['ResultSet']['Result']
     #print('how to link subject id to subject id?')
     #print(json_res)
-    subject_ids = [os.path.basename(entry['ID']) for entry in json_res if entry['project'] == 'BJH']
+    subject_ids = [os.path.basename(entry['ID']) for entry in json_res if entry['project'] == 'WashU'] # BJH this may be for dev
+    if just_ids:
+        return subject_ids
     subject_id_to_subject_sessions = {}
     for subject_id in subject_ids:
         session_ids = fetch_sessions_for_subject_id(subject_id)
@@ -415,11 +490,32 @@ def find_proper_subject_sessions():
     #print("how many subjects?", len(subject_ids))
     print(subject_to_sesions)
     useful_subject_to_session = {}
-    xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
+    #xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
+
+    data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
+    filtered_data = data[data['CSV_FILE_NUM'] > 0]
+    # Extract the values from the 'ID' column
+    session_ids = filtered_data['ID'].values
+
     for subject, sessions in subject_to_sesions.items():
+        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject)
+        file_name = subject+'custom_variable_xml'
+        directory = subject+'_xmls'
+        Path('./'+directory).mkdir(parents=True, exist_ok=True)
+        download_resource_file(custom_variables_url, file_name, directory)
+        for session_id in session_ids:
+            res = grab_custom_variables(subject, session_id)
+            if res and subject in useful_subject_to_session:
+                # Append the new value to the existing list
+                useful_subject_to_session[subject].append(session_id)
+            elif res:
+                # If the key doesn't exist, create it with a new list containing the value
+                useful_subject_to_session[subject] = [session_id]   
+    '''
+        
         for session_id in sessions:
             for number in range(1, 11):
-                url = '/data/experiments/'+session_id+'/scans/'+str(number)+'/resources/NWUCALCULATION/files?format=json'
+                url = '/data/experiments/'+session_id+'/scans/201/resources/EDEMA_BIOMARKER/files?format=json'
                 xnatSession.renew_httpsession()
                 response = xnatSession.httpsess.get(xnatSession.host + url)
                 json_res = None
@@ -428,7 +524,7 @@ def find_proper_subject_sessions():
                     metadata_masks=json_res['ResultSet']['Result']
                     uri_temp = [d['URI'] for d in metadata_masks if d['URI'].endswith('.csv')]
                     if uri_temp:
-                        print("ever ever ever here?")
+                        print("ever ever ever here?", subject, sessions, number)
                         if subject in useful_subject_to_session:
                             # Append the new value to the existing list
                             useful_subject_to_session[subject].append(session_id)
@@ -439,11 +535,13 @@ def find_proper_subject_sessions():
                     #print("following url does not have resource folder", xnatSession.host+url)
                     #print(f"JSONDecodeError: {e}")
                     continue
-                
-    xnatSession.close_httpsession()
+     '''
+               
+    #xnatSession.close_httpsession()
     print("about to return")
     # below currently prints empty dictionary
-    print(useful_subject_to_session)
+    with open("./useful_subject_to_session.json", "w") as outfile:
+        json.dump(useful_subject_to_session, outfile)
     return useful_subject_to_session
     
 
@@ -469,7 +567,7 @@ def test_main():
 
             URI = '/data/experiments/'+session_id+'/scans/2'
             resource_dir = 'NWUCALCULATION' # 'DICOM' or 'NWUCALCULATION'
-            resource_dirs = ['NWUCALCULATION', 'DICOM']
+            resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER for main
             for resource_dir in resource_dirs:
                 directory =subject+'_'+session_id+'_'+resource_dir
                 full_uri = get_resourcefiles_metadata_as_csv(URI, resource_dir)
@@ -503,11 +601,13 @@ def test_main():
     
 # parse info here....
 def one_sample_test():
-    sessionId = 'SNIPR02_E00166' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
-    subject_id = 'SNIPR02_S00034' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
-    URI = '/data/experiments/'+sessionId+'/scans/2'
-    resource_dir = 'NWUCALCULATION' # 'DICOM' or 'NWUCALCULATION'
-    resource_dirs = ['NWUCALCULATION', 'DICOM']
+    sessionId = 'SNIPR_E03708' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
+    subject_id = 'SNIPR_S01172' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
+    URI = '/data/experiments/'+sessionId+'/scans/4'
+    resource_dir = 'EDEMA_BIOMARKER' # 'DICOM' or 'NWUCALCULATION'
+    resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER in prod, NWUCALCULATION in dev environment
+    '''
+    
     for resource_dir in resource_dirs:
         directory = sessionId+'_'+subject_id+'_'+resource_dir
         full_uri = get_resourcefiles_metadata_as_csv(URI, resource_dir)
@@ -515,7 +615,7 @@ def one_sample_test():
         print('full uri:', full_uri)
         Path('./'+directory).mkdir(parents=True, exist_ok=True)
         download_resource_file(full_uri, os.path.basename(full_uri), directory)
-
+    '''
     custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
     file_name = subject_id+'custom_variable_xml'
     directory = subject_id+'_xmls'
@@ -527,5 +627,27 @@ def one_sample_test():
     upload_xml(file_name)
 if __name__ == '__main__':
     #test_main()
-    # one_sample_test()
-    find_proper_subject_sessions()
+    #one_sample_test()
+    #find_proper_subject_sessions()
+    # below code currently not for debugging
+    data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
+    filtered_data = data[data['CSV_FILE_NUM'] > 0]
+    # Extract the values from the 'ID' column
+    session_ids = filtered_data['ID'].values
+    
+    subject_id_url = '/data/subjects'
+    subject_ids = fetch_subjectid(subject_id_url, True)
+    useful_subject_to_session = {}
+    for subject_id in subject_ids:
+        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
+        (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
+        if potential_session_ids == None:
+            continue
+        matching_values = list(set(potential_session_ids) & set(session_ids))
+        if matching_values:
+            useful_subject_to_session[subject_id] = matching_values
+    
+    print("useful_subject_to_session")
+    print(useful_subject_to_session)
+    with open('./useful_subject_to_session.json', "w") as json_file:
+        json.dump(useful_subject_to_session, json_file)
