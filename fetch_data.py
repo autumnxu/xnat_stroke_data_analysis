@@ -17,6 +17,7 @@ XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
 XNAT_USER = 'autumnxu'
 XNAT_PASS = 'abc123'
 
+subject_errors = set()
 
 '''
 functionality
@@ -377,9 +378,101 @@ def fetch_sessionid(session_id_url):
     json_res = response.json()['ResultSet']['Result']
     print('how to link subject id to session id?')
     print(response.json()['ResultSet'])
-    session_id = [os.path.basename(entry['URI']) for entry in json_res if entry['project'] == 'BJH']
+    accessible_projects = ['BJH', 'COLI', 'WashU']
+    session_id = [os.path.basename(entry['URI']) for entry in json_res if entry['project'] in accessible_projects] 
     # here we need BJH_xxx 
     return session_id
+
+def fetch_proper_pair():
+    url = '/data/subjects/?format=json'
+    xnatSession = XnatSession(username=XNAT_USER, password=XNAT_PASS, host=XNAT_HOST)
+    xnatSession.renew_httpsession()
+    response = xnatSession.httpsess.get(xnatSession.host + url)
+    json_res = response.json()['ResultSet']['Result']
+    accessible_projects = ['BJH', 'COLI', 'WashU']
+    subject_paths = [entry['URI'] for entry in json_res if entry['project'] in accessible_projects] 
+    subject_to_sessions = {}
+    #print(subject_paths)
+    for subject_id in subject_paths:
+        url_to_session = '{0}/scans/?format=json'.format(subject_id)
+        xnatSession.renew_httpsession()
+        scans_response =  xnatSession.httpsess.get(xnatSession.host + url_to_session)
+        scans = None
+        try:
+            #this is a list of sessions
+            if not scans_response.json()['items'][0] or not scans_response.json()['items'][0]['children']:
+                # 	SNIPR02_S00828 for example
+                continue
+            scans = scans_response.json()['items'][0]['children'][0]['items']
+        except json.JSONDecodeError as e:
+            subject_errors.add(os.path.basename(subject_id))
+            print(f"JSONDecodeError: {e} for subject {subject_id}")
+            continue
+        '''
+        session_ids = []
+        for scan in scans:
+            if not scan['children']:
+                continue
+            scans_level_one = scan['children'][0]['items']
+            for details in scans_level_one:
+                if ('type' in details['data_fields'] and details['data_fields']['type'] == 'Z Axial Brain'):
+                    session_ids.append(details['data_fields']['image_session_ID'])
+        attempt list comprehension below
+        '''
+        session_ids = [
+            details['data_fields']['image_session_ID']
+            for scan in scans
+            if scan.get('children') and (scans_level_one := scan['children'][0]['items'])
+            for details in scans_level_one
+            if 'data_fields' in details and details['data_fields'].get('type') == 'Z Axial Brain'
+        ]
+        
+        
+        if not session_ids:
+            continue
+        #print(subject_id, scan_ids)
+        for session_id in session_ids:
+            url_to_label = '/data/experiments/{0}/scans/?format=json'.format(session_id)
+            xnatSession.renew_httpsession()
+            label_response =  xnatSession.httpsess.get(xnatSession.host + url_to_label)
+            #print(len(label_response.json()['ResultSet']['Result']))
+            label_json_response = label_response.json()['ResultSet']['Result']
+            scan_ids = [entry['ID'] for entry in label_json_response if entry.get('type') == 'Z Axial Brain']
+            #print(subject_id, session_id, scan_ids)
+            
+            if not scan_ids:
+                continue
+            for scan_id in scan_ids:
+                url_to_label = '/data/experiments/{0}/scans/{1}/resources/?format=json'.format(session_id, scan_id)
+                xnatSession.renew_httpsession()
+                resource_format =  xnatSession.httpsess.get(xnatSession.host + url_to_label)
+                with open('error_subjects.txt', 'a') as f:
+                    to_write = [subject_id, session_id, scan_ids, resource_format.json()['ResultSet']['Result'][0]['label']]
+                    f.write(str(to_write)+'\n')
+                if resource_format.json()['ResultSet']['Result'][0]['label'] != 'EDEMA_BIOMARKER':
+                    continue
+
+                url_to_edema = '/data/experiments/{0}/scans/{1}/resources/EDEMA_BIOMARKER/?format=json'.format(session_id, scan_id)
+                xnatSession.renew_httpsession()
+                column_dropped =  xnatSession.httpsess.get(xnatSession.host + url_to_edema)
+                print(column_dropped.json().keys())
+
+                
+
+
+        '''
+        here label needs to be EDEMA_BIOMARKER
+        https://snipr.wustl.edu/data/experiments/SNIPR02_E07584/scans/2/resources 
+        
+        then another call to grab the actual xml
+        cat:entry ID=
+        '''
+       
+    xnatSession.close_httpsession()
+    with open('error_subjects.txt', 'a') as f:
+        #f.write(subject_id + '\n')
+        f.write(str(subject_errors))
+    return subject_to_sessions
 
 # either this is buggy or the above function is buggy
 def fetch_subjectid(subject_id_url, just_ids):
@@ -592,4 +685,5 @@ def one_sample_test():
 if __name__ == '__main__':
     #test_main()
     #one_sample_test()
-    find_proper_subject_sessions()
+    # find_proper_subject_sessions()
+    fetch_proper_pair()
