@@ -170,12 +170,12 @@ since the uploading of xml won't work
 '''
 def fill_info(sessionId, subject_id):
     dicom_dict = None
-    '''
+    
     dicom_dict = grab_dicom_info(sessionId)
     nwu_dict = grab_nwu_info(sessionId)
     if not nwu_dict:
         return (None, None)
-    '''
+    
     
     cutom_variables_dict = grab_custom_variables(subject_id, sessionId)
     
@@ -289,7 +289,7 @@ def grab_custom_variables(subject_id, session_id):
         custom_variables_dict['Stroke_Time'] = padded
         custom_variables_dict['Stroke_Date'] = padded_date
         custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
-        return session_id
+        #return session_id
         
         usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
 
@@ -481,9 +481,9 @@ def fetch_proper_pair():
                             #print("Session checked")
                             base_subject_id = os.path.basename(subject_id)
                             if base_subject_id in subject_to_sessions:
-                                subject_to_sessions[base_subject_id].append(session_id)
+                                subject_to_sessions[base_subject_id].append([session_id, scan_id])
                             else:
-                                subject_to_sessions[base_subject_id] = [session_id]
+                                subject_to_sessions[base_subject_id] = [[session_id, scan_id]]
        
     xnatSession.close_httpsession()
     with open('error_subjects.txt', 'a') as f:
@@ -498,6 +498,7 @@ def fetch_subject_paths(xnat_session, accessible_projects):
     url = '/data/subjects/?format=json'
     response = xnat_session.httpsess.get(xnat_session.host + url)
     json_res = response.json()['ResultSet']['Result']
+    # TODO: here fix the return to include project name, useful for further investigation 
     return [entry['URI'] for entry in json_res if entry['project'] in accessible_projects]
 
 def get_scans(xnat_session, subject_id):
@@ -572,7 +573,7 @@ def fetch_proper_pair_modularized():
             
             for scan_id in scan_ids:
                 if is_edema_biomarker_present(xnatSession, session_id, scan_id):
-                    subject_to_sessions[os.path.basename(subject_id)].append(session_id)
+                    subject_to_sessions[os.path.basename(subject_id)].append([session_id, scan_id])
                     
     xnatSession.close_httpsession()
     return subject_to_sessions
@@ -730,9 +731,9 @@ def test_main(subject_to_sesions):
     partial_execution = 5
     count = 0
     for subject, sessions in subject_to_sesions.items():
-        for session_id in sessions:
+        for session_id, scan_id in sessions:
             # TODO: this scan id needs to be reflected from useful pairs above
-            URI = '/data/experiments/'+session_id+'/scans/2'
+            URI = '/data/experiments/'+session_id+'/scans/'+scan_id
             resource_dir = 'NWUCALCULATION' # 'DICOM' or 'NWUCALCULATION'
             resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER for main
             for resource_dir in resource_dirs:
@@ -747,6 +748,7 @@ def test_main(subject_to_sesions):
                 download_resource_file(full_uri, os.path.basename(full_uri), directory)
     
             # not every subject id has custom variables
+            # TODO: here WashU would needs to be dynamic, not all from the same project
             custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject)
             file_name = subject+'custom_variable_xml'
             directory = subject+'_xmls'
@@ -768,8 +770,8 @@ def test_main(subject_to_sesions):
     
 # parse info here....
 def one_sample_test():
-    sessionId = 'SNIPR01_E00048' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
-    subject_id = 'SNIPR01_S00024' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
+    sessionId = 'SNIPR02_E02944' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
+    subject_id = 'SNIPR02_S01298' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
     URI = '/data/experiments/'+sessionId+'/scans/2'
     #resource_dir = 'EDEMA_BIOMARKER' # 'DICOM' or 'NWUCALCULATION'
     resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER in prod, NWUCALCULATION in dev environment
@@ -793,9 +795,10 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
-    #test_main()
-    #one_sample_test()
-    # 
+    
+    one_sample_test()
+    '''
+    below for full test
     start = time.time()
     subject_to_sessions = fetch_proper_pair_modularized()
     #with open('useful_subject_to_session.json', "w") as json_file:
@@ -808,3 +811,5 @@ if __name__ == '__main__':
     
     all_sessions = list(subject_to_sessions.values())
     useful_subject_to_session = find_proper_subject_sessions(all_sessions)
+    #test_main(useful_subject_to_session)
+    '''
