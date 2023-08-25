@@ -294,6 +294,35 @@ def grab_custom_variables(subject_id, session_id):
     list_of_dict = None
     try:
         list_of_dict = dict_of_xml['xnat:Subject']['xnat:fields']['xnat:field'] 
+        # TODO fix the code to grab quality 
+        
+        '''
+        usability = None
+        #dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment'][1]['xnat:scans']['xnat:scan'][1]['@type']
+        for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']:
+            if item['@ID'] == session_id:
+                for child in item['xnat:scans']['xnat:scan']:
+                    if child['@type'] == "Z-Axial-Brain":
+                        usability = child['xnat:quality']
+        
+        usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
+        list_of_dict = dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
+        scan_info = [dict for dict in list_of_dict if dict['@ID'] == session_id]
+        tmp = [d for d in scan_info if "xnat:scans" in d]
+        tmp = tmp[0]
+        tmp = tmp['xnat:scans']['xnat:scan']
+        tmp = next((d for d in tmp if d.get("@type") == "Z-Axial-Brain"), None)
+        usability = tmp['xnat:quality']
+        '''
+        usability = [
+            child['xnat:quality']
+            for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
+            if item['@ID'] == session_id
+            for child in item['xnat:scans']['xnat:scan']
+            if child['@type'] == "Z-Axial-Brain"
+        ]
+
+        custom_variables_dict['Scan_Quality'] = usability[0]
         cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grade'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
         cerebral_stroke = cerebral_stroke[0]
         value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
@@ -306,19 +335,6 @@ def grab_custom_variables(subject_id, session_id):
         custom_variables_dict['Stroke_Date'] = padded_date
         custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
         #return session_id
-        
-        usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
-
-
-        list_of_dict = dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
-        scan_info = [dict for dict in list_of_dict if dict['@ID'] == session_id]
-        tmp = [d for d in scan_info if "xnat:scans" in d]
-        tmp = tmp[0]
-        tmp = tmp['xnat:scans']['xnat:scan']
-        tmp = next((d for d in tmp if d.get("@type") == "Z-Axial-Brain"), None)
-        usability = tmp['xnat:quality']
-
-        custom_variables_dict['Scan_Quality'] = usability
         print(custom_variables_dict)
     except (KeyError, IndexError):
         return None
@@ -345,11 +361,12 @@ def grab_dicom_info(sessionId):
     ds = pydicom.dcmread(filepaths[0])
     # to return 
     dicom_dict = {}
-    acquisition_date = ds[0x0008, 0x0022].value
+    print(ds)
+    acquisition_date = ds[0x0008, 0x0020].value # 0x0008, 0x0022 Acquisition Date in dev,prod: (0008, 0020) Study Date 
     acquisition_date= acquisition_date[:4]+'-'+acquisition_date[4:6]+'-'+acquisition_date[6:]
     print(acquisition_date)
     dicom_dict['Scan_Date'] = acquisition_date
-    acquisition_time = ds[0x0008, 0x0032].value # needs to be fixed
+    acquisition_time = ds[0x0008, 0x0030].value # 0x0008, 0x0032 Acquisition Time in dev, prod: (0008, 0030) Study Time   
     acquisition_time = acquisition_time.split('.')[0]
     dicom_dict['Scan_Time']  = acquisition_time[:2] + ':' + acquisition_time[2:4] + ':' + acquisition_time[4:] 
 
@@ -833,9 +850,9 @@ def test_main(subject_project_to_sesions_scans):
     
 # parse info here....
 def one_sample_test():
-    sessionId = 'SNIPR02_E02944' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
-    subject_id = 'SNIPR02_S01298' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
-    URI = '/data/experiments/'+sessionId+'/scans/2'
+    sessionId = 'SNIPR_E03244' # final value used for dev: SNIPR_E03665; SNIPR_E03517 CT session associated with subject 001
+    subject_id = 'SNIPR_S00917' # final value used for dev: SNIPR_S01154; SNIPR_S01016 this is subject 001, no relevant custom variable uploaded
+    URI = '/data/experiments/'+sessionId+'/scans/1-CT1'
     #resource_dir = 'EDEMA_BIOMARKER' # 'DICOM' or 'NWUCALCULATION'
     resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER in prod, NWUCALCULATION in dev environment
     
@@ -858,9 +875,8 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
-    #one_sample_test()
+    one_sample_test()
     '''
-    
     #below for full test
     start = time.time()
     subject_to_sessions = fetch_proper_pair_modularized()
@@ -871,7 +887,7 @@ if __name__ == '__main__':
             file.write(f"{key}: {value}\n")
     end = time.time()
     print('fetch_proper_pair_modularized -- time elapsed in seconds: ', end - start) # ~30 min to execute
-    '''
+    
     start = time.time()
     subject_to_sessions = read_dict()
     all_sessions_scans = list(subject_to_sessions.values())
@@ -881,4 +897,4 @@ if __name__ == '__main__':
     end = time.time()
     print('find_proper_subject_sessions -- time elapsed in seconds: ', end - start)
     test_main(useful_subject_to_session)
-    
+    '''
