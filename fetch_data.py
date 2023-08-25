@@ -499,7 +499,8 @@ def fetch_subject_paths(xnat_session, accessible_projects):
     response = xnat_session.httpsess.get(xnat_session.host + url)
     json_res = response.json()['ResultSet']['Result']
     # TODO: here fix the return to include project name, useful for further investigation 
-    return [entry['URI'] for entry in json_res if entry['project'] in accessible_projects]
+    tmp = [[entry['URI'], entry['project']] for entry in json_res if entry['project'] in accessible_projects]
+    return tmp # [entry['URI'] for entry in json_res if entry['project'] in accessible_projects]
 
 def get_scans(xnat_session, subject_id):
     url_to_session = '{0}/scans/?format=json'.format(subject_id)
@@ -551,13 +552,15 @@ def fetch_proper_pair_modularized():
     xnatSession.renew_httpsession()
 
     accessible_projects = ['BJH', 'COLI', 'WashU']
-    subject_paths = fetch_subject_paths(xnatSession, accessible_projects)
+    subject_paths_projects = fetch_subject_paths(xnatSession, accessible_projects)
 
     subject_to_sessions = defaultdict(list)
     accepted_types = ['Z Axial Brain', 'Z-Axial-Brain']
     
-    for subject_id in subject_paths:
-        scans = get_scans(xnatSession, subject_id)
+    for pair in subject_paths_projects:
+        subject_path = pair[0]
+        project = pair[1]
+        scans = get_scans(xnatSession, subject_path)
         if scans is None:
             continue
         
@@ -573,7 +576,7 @@ def fetch_proper_pair_modularized():
             
             for scan_id in scan_ids:
                 if is_edema_biomarker_present(xnatSession, session_id, scan_id):
-                    subject_to_sessions[os.path.basename(subject_id)].append([session_id, scan_id])
+                    subject_to_sessions[(os.path.basename(subject_path), project)].append([session_id, scan_id])
                     
     xnatSession.close_httpsession()
     return subject_to_sessions
@@ -679,8 +682,25 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
     }
 )
 '''
+
+def read_dict():
+    file_path = 'error_subjects.txt'
+
+    # Initialize an empty dictionary
+    data_dict = {}
+
+    # Read and process the lines from the file
+    with open(file_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            key, values_str = line.split(':')
+            key = key.strip()
+            values_list = [value.strip() for value in values_str[1:-1].split(',')]
+            data_dict[key] = values_list
+    return data_dict
+        
     
-def find_proper_subject_sessions(full_session_ids):
+def find_proper_subject_sessions(full_session_ids, full_dict):
     
     print("executing tasks in find_proper_subject_sessions")
     data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
@@ -689,19 +709,32 @@ def find_proper_subject_sessions(full_session_ids):
     session_ids = filtered_data['ID'].values
     if not full_session_ids:
         full_session_ids = session_ids
-    
-    subject_id_url = '/data/subjects'
-    subject_ids = fetch_subjectid(subject_id_url, True)
-    useful_subject_to_session = {}
-    for subject_id in subject_ids:
-        custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
-        (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
-        if potential_session_ids == None:
-            continue
-        matching_values = list(set(potential_session_ids) & set(full_session_ids[subject_id]))
-        if matching_values:
-            useful_subject_to_session[subject_id] = matching_values
-    
+    if (full_dict is None):
+        subject_id_url = '/data/subjects'
+        subject_ids = fetch_subjectid(subject_id_url, True)
+        useful_subject_to_session = {}
+        for subject_id in subject_ids:
+            custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
+            (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
+            if potential_session_ids == None:
+                continue
+            matching_values = list(set(potential_session_ids) & set(full_session_ids[subject_id]))
+            if matching_values:
+                useful_subject_to_session[subject_id] = matching_values
+    else:
+        for subject_id_project, session_scan in full_dict.items():
+            subject_id = subject_id_project[0]
+            project = subject_id_project[1]
+            custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/{1}'.format(subject_id, project)
+            (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
+            if potential_session_ids == None:
+                continue
+            session_ids_from_csv = [item[0] for item in session_scan]
+            matching_values = list(set(potential_session_ids) & set(session_ids_from_csv))
+            if matching_values:
+                useful_subject_to_session[subject_id] = matching_values
+
+
     print("useful_subject_to_session")
     print(useful_subject_to_session)
     with open('./useful_subject_to_session.json', "w") as json_file:
@@ -796,9 +829,10 @@ def one_sample_test():
 
 if __name__ == '__main__':
     
-    one_sample_test()
-    '''
-    below for full test
+    #one_sample_test()
+    ''''''
+    
+    #below for full test
     start = time.time()
     subject_to_sessions = fetch_proper_pair_modularized()
     #with open('useful_subject_to_session.json', "w") as json_file:
@@ -809,7 +843,10 @@ if __name__ == '__main__':
     end = time.time()
     print('fetch_proper_pair_modularized -- time elapsed in seconds: ', end - start)
     
+    subject_to_sessions = read_dict()
     all_sessions = list(subject_to_sessions.values())
+    
+
     useful_subject_to_session = find_proper_subject_sessions(all_sessions)
-    #test_main(useful_subject_to_session)
-    '''
+    test_main(useful_subject_to_session)
+    
