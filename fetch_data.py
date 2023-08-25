@@ -682,22 +682,35 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
     }
 )
 '''
-
+# this needs to be modifed after seeing exactly how the txt file is formatted
 def read_dict():
     file_path = 'error_subjects.txt'
+    # Read the content from the text file
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
 
     # Initialize an empty dictionary
-    data_dict = {}
+    result_dict = {}
 
-    # Read and process the lines from the file
-    with open(file_path, 'r') as file:
-        for line in file:
-            line = line.strip()
-            key, values_str = line.split(':')
-            key = key.strip()
-            values_list = [value.strip() for value in values_str[1:-1].split(',')]
-            data_dict[key] = values_list
-    return data_dict
+    # Process each line and create the dictionary
+    for line in lines:
+        line = line.strip()  # Remove leading/trailing whitespace and newline characters
+        key_info, value_info = line.split(':')  # Split the line into key and value parts
+
+        # Extract key information
+        key_info = key_info.strip('()')  # Remove parentheses
+        key_parts = key_info.split(', ')   # Split key parts
+        key = key_parts[0], key_parts[1]   # Tuple containing the first two parts as key
+
+        # Extract and process value information
+        value_str = value_info.strip()  # Remove leading/trailing whitespace
+        value_list = eval(value_str)    # Evaluate the string as a Python expression to get the list
+
+        result_dict[key] = value_list
+
+    # Print the resulting dictionary
+    print(result_dict)
+    return result_dict
         
     
 def find_proper_subject_sessions(full_session_ids, full_dict):
@@ -709,10 +722,11 @@ def find_proper_subject_sessions(full_session_ids, full_dict):
     session_ids = filtered_data['ID'].values
     if not full_session_ids:
         full_session_ids = session_ids
+    useful_subject_to_session = {}
     if (full_dict is None):
         subject_id_url = '/data/subjects'
         subject_ids = fetch_subjectid(subject_id_url, True)
-        useful_subject_to_session = {}
+        
         for subject_id in subject_ids:
             custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
             (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
@@ -723,8 +737,8 @@ def find_proper_subject_sessions(full_session_ids, full_dict):
                 useful_subject_to_session[subject_id] = matching_values
     else:
         for subject_id_project, session_scan in full_dict.items():
-            subject_id = subject_id_project[0]
-            project = subject_id_project[1]
+            subject_id = subject_id_project[0].strip("'")
+            project = subject_id_project[1].strip("'")
             custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/{1}'.format(subject_id, project)
             (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
             if potential_session_ids == None:
@@ -743,7 +757,7 @@ def find_proper_subject_sessions(full_session_ids, full_dict):
     return useful_subject_to_session
     
 
-def test_main(subject_to_sesions):
+def test_main(subject_project_to_sesions_scans):
     '''the following code works
     xml = '03_31_23_20_11_46.xml'
     upload_xml(xml)
@@ -763,9 +777,12 @@ def test_main(subject_to_sesions):
     # before automating the session id and subject with the code above, figure out more details below
     partial_execution = 5
     count = 0
-    for subject, sessions in subject_to_sesions.items():
-        for session_id, scan_id in sessions:
-            # TODO: this scan id needs to be reflected from useful pairs above
+    for subject_project, sessions_scans in subject_project_to_sesions_scans.items():
+        subject = subject_project[0]
+        project = subject_project[1]
+        for session_scan in sessions_scans:
+            session_id = session_scan[0]
+            scan_id = session_scan[1]
             URI = '/data/experiments/'+session_id+'/scans/'+scan_id
             resource_dir = 'NWUCALCULATION' # 'DICOM' or 'NWUCALCULATION'
             resource_dirs = ['EDEMA_BIOMARKER', 'DICOM'] # EDEMA_BIOMARKER for main
@@ -781,8 +798,7 @@ def test_main(subject_to_sesions):
                 download_resource_file(full_uri, os.path.basename(full_uri), directory)
     
             # not every subject id has custom variables
-            # TODO: here WashU would needs to be dynamic, not all from the same project
-            custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject)
+            custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/{1}'.format(subject, project)
             file_name = subject+'custom_variable_xml'
             directory = subject+'_xmls'
             Path('./'+directory).mkdir(parents=True, exist_ok=True)
@@ -830,7 +846,7 @@ def one_sample_test():
 if __name__ == '__main__':
     
     #one_sample_test()
-    ''''''
+    '''
     
     #below for full test
     start = time.time()
@@ -842,11 +858,14 @@ if __name__ == '__main__':
             file.write(f"{key}: {value}\n")
     end = time.time()
     print('fetch_proper_pair_modularized -- time elapsed in seconds: ', end - start)
-    
+    '''
+    start = time.time()
     subject_to_sessions = read_dict()
-    all_sessions = list(subject_to_sessions.values())
+    all_sessions_scans = list(subject_to_sessions.values())
     
 
-    useful_subject_to_session = find_proper_subject_sessions(all_sessions)
+    useful_subject_to_session = find_proper_subject_sessions(all_sessions_scans, subject_to_sessions)
+    end = time.time()
+    print('find_proper_subject_sessions -- time elapsed in seconds: ', end - start)
     test_main(useful_subject_to_session)
     
