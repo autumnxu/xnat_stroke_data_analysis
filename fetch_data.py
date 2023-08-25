@@ -13,7 +13,7 @@ import requests
 import xml.etree.ElementTree as ET # trying to not download xml but deal with the content right there
 import time
 from collections import defaultdict # to avoid ambiguous {} initiating python dict
-
+import re # to extract version date and analysis date
 # global variables
 XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
 XNAT_USER = 'autumnxu'
@@ -134,19 +134,6 @@ def view_resources(url, resource_dir):
             custom_variables_dict['Scan_Quality'] = scan_quality
             
     return (custom_variables_dict, potential_session_ids)
-    '''
-    scans_element = root.find('.//xnat:scans', namespaces=namespace_dict)
-    matching_scan_element = scans_element.find('.//xnat:scan[xnat:image_session_ID="{}"]'.format(session_id), namespaces=namespace_dict)
-
-    if matching_scan_element:
-        quality = matching_scan_element.findtext('xnat:quality', namespaces=namespace_dict)
-
-    #  stroke_onset_date_element.text has the actual info
-    
-    for item_element in root.findall('item'):
-        name = item_element.get('name')
-        value = item_element.get('value')
-    '''
         
 
 
@@ -251,6 +238,35 @@ def grab_nwu_info(sessionId):
     net_water_uptake_dict['Infarct_Volumn'] = round(dataframe.loc[0, "INFARCT VOLUME"], decimal_place)
     net_water_uptake_dict['Total_Cerebrospinal_Fluid_Volume'] = round(dataframe.loc[0, "TOTAL CSF VOLUME"], decimal_place)
     net_water_uptake_dict['Cerebrospinal_Fluid_Ratio'] = round(dataframe.loc[0, "CSF RATIO"], decimal_place)
+    '''
+    # 
+    IS THIS CORRECT? TODO
+    COLI_HM56_01222022_2319_2_threshold0_40TOTAL_VersionDate-11302022_01_11_2023columndropped.csv
+    for the csv file name above, version date: 2022-11-30, analysis date: 2020-07-17
+    COLI_HM04_07172020_0800_2_threshold0_40TOTAL_VersionDate-11302022_05_11_2023columndropped.csv
+    filepaths[0]
+    Analysis_Date: 2023-01-01
+    Version_Date: 2023-01-01
+    '''
+    file_name = os.path.basename(filepaths[0])
+    parts = file_name.split('_')
+
+    # Extract analysis date
+    analysis_date_part = parts[2]
+    analysis_month = analysis_date_part[0:2]
+    analysis_day = analysis_date_part[2:4]
+    analysis_year = analysis_date_part[4:8]
+    net_water_uptake_dict['Analysis_Date'] = f"{analysis_year}-{analysis_month}-{analysis_day}"
+
+    # Extract version date
+    version_date_match = re.search(r"VersionDate-(\d{2})(\d{2})(\d{4})", file_name)
+    if version_date_match:
+        version_month = version_date_match.group(1)
+        version_day = version_date_match.group(2)
+        version_year = version_date_match.group(3)
+        net_water_uptake_dict['Version_Date'] = f"{version_year}-{version_month}-{version_day}"
+    else:
+        print("Version date not found for session", sessionId)
     print(net_water_uptake_dict)
     return net_water_uptake_dict
 
@@ -498,9 +514,7 @@ def fetch_subject_paths(xnat_session, accessible_projects):
     url = '/data/subjects/?format=json'
     response = xnat_session.httpsess.get(xnat_session.host + url)
     json_res = response.json()['ResultSet']['Result']
-    # TODO: here fix the return to include project name, useful for further investigation 
-    tmp = [[entry['URI'], entry['project']] for entry in json_res if entry['project'] in accessible_projects]
-    return tmp # [entry['URI'] for entry in json_res if entry['project'] in accessible_projects]
+    return [[entry['URI'], entry['project']] for entry in json_res if entry['project'] in accessible_projects]
 
 def get_scans(xnat_session, subject_id):
     url_to_session = '{0}/scans/?format=json'.format(subject_id)
@@ -844,7 +858,6 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
-    
     #one_sample_test()
     '''
     
@@ -857,14 +870,14 @@ if __name__ == '__main__':
         for key, value in subject_to_sessions.items():
             file.write(f"{key}: {value}\n")
     end = time.time()
-    print('fetch_proper_pair_modularized -- time elapsed in seconds: ', end - start)
+    print('fetch_proper_pair_modularized -- time elapsed in seconds: ', end - start) # ~30 min to execute
     '''
     start = time.time()
     subject_to_sessions = read_dict()
     all_sessions_scans = list(subject_to_sessions.values())
     
 
-    useful_subject_to_session = find_proper_subject_sessions(all_sessions_scans, subject_to_sessions)
+    useful_subject_to_session = find_proper_subject_sessions(all_sessions_scans, subject_to_sessions) # 12 min to execute 
     end = time.time()
     print('find_proper_subject_sessions -- time elapsed in seconds: ', end - start)
     test_main(useful_subject_to_session)
