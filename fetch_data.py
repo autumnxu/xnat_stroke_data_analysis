@@ -11,6 +11,7 @@ from datetime import datetime
 from xnatSession import XnatSession
 import requests
 import xml.etree.ElementTree as ET # trying to not download xml but deal with the content right there
+import time
 
 # global variables
 XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
@@ -391,9 +392,14 @@ def fetch_proper_pair():
     json_res = response.json()['ResultSet']['Result']
     accessible_projects = ['BJH', 'COLI', 'WashU']
     subject_paths = [entry['URI'] for entry in json_res if entry['project'] in accessible_projects] 
+    #with open('error_subjects.txt', 'a') as f:
+    #    f.write(str(subject_paths)+'\n')
     subject_to_sessions = {}
+    accepted_types = ['Z Axial Brain', 'Z-Axial-Brain']
     #print(subject_paths)
     for subject_id in subject_paths:
+        if (subject_id == '/data/subjects/SNIPR02_S00103'):
+            print('hopeful subject id')
         url_to_session = '{0}/scans/?format=json'.format(subject_id)
         xnatSession.renew_httpsession()
         scans_response =  xnatSession.httpsess.get(xnatSession.host + url_to_session)
@@ -403,13 +409,37 @@ def fetch_proper_pair():
             if not scans_response.json()['items'][0] or not scans_response.json()['items'][0]['children']:
                 # 	SNIPR02_S00828 for example
                 continue
-            scans = scans_response.json()['items'][0]['children'][0]['items']
+            scans = scans_response.json()['items'][0]['children']
+            '''
+            scans = scans_response.json()['items'][0]['children'] the next [0] could be multiple
+            for each scan in scans find ... 
+
+            em = scans_response.json()[2]['items'][1]['children'][1]['items'][1]['data_fields']['type']
+                                                          v           v              v           v
+            scans_response.json()['items'][0]['children'][2]['items'][1]['children'][1]['items'][1]['data_fields']['type']
+
+            scans = scans_response.json()['items'][0]['children']
+            for children in scans:
+                for child in children['items']:
+                    for grandchildren in child['children']:
+                        for grandchild in grandchildren['items']:
+                            if ('data_fields' in grandchild and 'type' in grandchild['data_fields'] and grandchild['data_fields']['type'] in accepted_types):
+                                session_ids.append(grandchild['data_fields']['image_session_ID'])
+            '''
+            #scans = scans_response.json()['items'][0]['children'][0]['items']
         except json.JSONDecodeError as e:
             subject_errors.add(os.path.basename(subject_id))
             print(f"JSONDecodeError: {e} for subject {subject_id}")
             continue
-        '''
         session_ids = []
+        for children in scans:
+                for child in children['items']:
+                    for grandchildren in child['children']:
+                        for grandchild in grandchildren['items']:
+                            if ('data_fields' in grandchild and 'type' in grandchild['data_fields'] and grandchild['data_fields']['type'] in accepted_types):
+                                session_ids.append(grandchild['data_fields']['image_session_ID'])
+        '''
+        
         for scan in scans:
             if not scan['children']:
                 continue
@@ -418,15 +448,15 @@ def fetch_proper_pair():
                 if ('type' in details['data_fields'] and details['data_fields']['type'] == 'Z Axial Brain'):
                     session_ids.append(details['data_fields']['image_session_ID'])
         attempt list comprehension below
-        '''
+        
         session_ids = [
             details['data_fields']['image_session_ID']
             for scan in scans
             if scan.get('children') and (scans_level_one := scan['children'][0]['items'])
             for details in scans_level_one
-            if 'data_fields' in details and details['data_fields'].get('type') == 'Z Axial Brain'
+            if 'data_fields' in details and details['data_fields'].get('type') in accepted_types
         ]
-        
+        '''
         
         if not session_ids:
             continue
@@ -437,7 +467,10 @@ def fetch_proper_pair():
             label_response =  xnatSession.httpsess.get(xnatSession.host + url_to_label)
             #print(len(label_response.json()['ResultSet']['Result']))
             label_json_response = label_response.json()['ResultSet']['Result']
-            scan_ids = [entry['ID'] for entry in label_json_response if entry.get('type') == 'Z Axial Brain']
+            if (session_id == 'SNIPR02_E00389'):
+                print("partial correct")
+            # the way scan_ids are retrieved -- problematic
+            scan_ids = [entry['ID'] for entry in label_json_response if entry.get('type')in accepted_types]
             #print(subject_id, session_id, scan_ids)
             
             if not scan_ids:
@@ -446,32 +479,48 @@ def fetch_proper_pair():
                 url_to_label = '/data/experiments/{0}/scans/{1}/resources/?format=json'.format(session_id, scan_id)
                 xnatSession.renew_httpsession()
                 resource_format =  xnatSession.httpsess.get(xnatSession.host + url_to_label)
+                
+                
+                tmp_json =  resource_format.json()['ResultSet']['Result']
+                edema_biomarker_present = any(d.get('label') == 'EDEMA_BIOMARKER' for d in tmp_json)
+                labels = [d['label'] for d in tmp_json if 'label' in d]
                 with open('error_subjects.txt', 'a') as f:
-                    to_write = [subject_id, session_id, scan_ids, resource_format.json()['ResultSet']['Result'][0]['label']]
-                    f.write(str(to_write)+'\n')
-                if resource_format.json()['ResultSet']['Result'][0]['label'] != 'EDEMA_BIOMARKER':
+                    if (labels[0] != 'DICOM'):
+                        to_write = [subject_id, session_id, scan_ids, labels]
+                        f.write(str(to_write)+'\n')
+                if not edema_biomarker_present:
                     continue
-
+                #print("hereeeeeee!!!!!")
                 url_to_edema = '/data/experiments/{0}/scans/{1}/resources/EDEMA_BIOMARKER/?format=json'.format(session_id, scan_id)
                 xnatSession.renew_httpsession()
-                column_dropped =  xnatSession.httpsess.get(xnatSession.host + url_to_edema)
-                print(column_dropped.json().keys())
-
-                
-
-
-        '''
-        here label needs to be EDEMA_BIOMARKER
-        https://snipr.wustl.edu/data/experiments/SNIPR02_E07584/scans/2/resources 
-        
-        then another call to grab the actual xml
-        cat:entry ID=
-        '''
+                column_dropped = xnatSession.httpsess.get(xnatSession.host + url_to_edema)
+                namespace_dict = {
+                    'xnat': 'http://nrg.wustl.edu/xnat',
+                    'xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+                    'cat': 'http://nrg.wustl.edu/catalog'
+                }
+                if column_dropped.status_code == 200:
+                    xml_content = column_dropped.content  # Get the raw XML content
+                    root = ET.fromstring(xml_content)
+                    fields_element = root.find('.//cat:entries', namespaces=namespace_dict)
+                    if fields_element == None:
+                        continue
+                    for entry in root.findall('.//cat:entry', namespaces=namespace_dict):
+                        entry_id = entry.get('ID')
+                        if "columndropped.csv" in entry_id:
+                            #print("Session checked")
+                            base_subject_id = os.path.basename(subject_id)
+                            if base_subject_id in subject_to_sessions:
+                                subject_to_sessions[base_subject_id].append(session_id)
+                            else:
+                                subject_to_sessions[base_subject_id] = [session_id]
        
     xnatSession.close_httpsession()
     with open('error_subjects.txt', 'a') as f:
         #f.write(subject_id + '\n')
         f.write(str(subject_errors))
+    print('about to return subject_to_sessions')
+    print(subject_to_sessions)
     return subject_to_sessions
 
 # either this is buggy or the above function is buggy
@@ -575,12 +624,15 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
 )
 '''
     
-def find_proper_subject_sessions():
+def find_proper_subject_sessions(full_session_ids):
+    
     print("executing tasks in find_proper_subject_sessions")
     data = pd.read_csv('sessions_ANALYTICS_20230705132606.csv', usecols=['ID', 'CSV_FILE_NUM'])
     filtered_data = data[data['CSV_FILE_NUM'] > 0]
     # Extract the values from the 'ID' column
     session_ids = filtered_data['ID'].values
+    if not full_session_ids:
+        full_session_ids = session_ids
     
     subject_id_url = '/data/subjects'
     subject_ids = fetch_subjectid(subject_id_url, True)
@@ -590,7 +642,7 @@ def find_proper_subject_sessions():
         (partial_xml, potential_session_ids) = view_resources(custom_variables_url, 'BIOMARAKER_EDEMA')
         if potential_session_ids == None:
             continue
-        matching_values = list(set(potential_session_ids) & set(session_ids))
+        matching_values = list(set(potential_session_ids) & set(full_session_ids[subject_id]))
         if matching_values:
             useful_subject_to_session[subject_id] = matching_values
     
@@ -686,4 +738,8 @@ if __name__ == '__main__':
     #test_main()
     #one_sample_test()
     # find_proper_subject_sessions()
+    start = time.time()
     fetch_proper_pair()
+    end = time.time()
+    print('time elapsed in seconds: ')
+    print(end - start)
