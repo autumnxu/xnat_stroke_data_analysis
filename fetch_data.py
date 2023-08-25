@@ -238,25 +238,16 @@ def grab_nwu_info(sessionId):
     net_water_uptake_dict['Infarct_Volumn'] = round(dataframe.loc[0, "INFARCT VOLUME"], decimal_place)
     net_water_uptake_dict['Total_Cerebrospinal_Fluid_Volume'] = round(dataframe.loc[0, "TOTAL CSF VOLUME"], decimal_place)
     net_water_uptake_dict['Cerebrospinal_Fluid_Ratio'] = round(dataframe.loc[0, "CSF RATIO"], decimal_place)
-    '''
-    # 
-    IS THIS CORRECT? TODO
-    COLI_HM56_01222022_2319_2_threshold0_40TOTAL_VersionDate-11302022_01_11_2023columndropped.csv
-    for the csv file name above, version date: 2022-11-30, analysis date: 2020-07-17
-    COLI_HM04_07172020_0800_2_threshold0_40TOTAL_VersionDate-11302022_05_11_2023columndropped.csv
-    filepaths[0]
-    Analysis_Date: 2023-01-01
-    Version_Date: 2023-01-01
-    '''
     file_name = os.path.basename(filepaths[0])
-    parts = file_name.split('_')
 
     # Extract analysis date
-    analysis_date_part = parts[2]
-    analysis_month = analysis_date_part[0:2]
-    analysis_day = analysis_date_part[2:4]
-    analysis_year = analysis_date_part[4:8]
-    net_water_uptake_dict['Analysis_Date'] = f"{analysis_year}-{analysis_month}-{analysis_day}"
+    analysis_date_match = re.search(r"VersionDate.*?(\d{2})_(\d{2})_(\d{4})columndropped.csv", file_name)
+    if analysis_date_match:
+        analysis_month = analysis_date_match.group(1)
+        analysis_day = analysis_date_match.group(2)
+        analysis_year = analysis_date_match.group(3)
+        net_water_uptake_dict['Analysis_Date'] = f"{analysis_year}-{analysis_month}-{analysis_day}"
+    
 
     # Extract version date
     version_date_match = re.search(r"VersionDate-(\d{2})(\d{2})(\d{4})", file_name)
@@ -294,26 +285,6 @@ def grab_custom_variables(subject_id, session_id):
     list_of_dict = None
     try:
         list_of_dict = dict_of_xml['xnat:Subject']['xnat:fields']['xnat:field'] 
-        # TODO fix the code to grab quality 
-        
-        '''
-        usability = None
-        #dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment'][1]['xnat:scans']['xnat:scan'][1]['@type']
-        for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']:
-            if item['@ID'] == session_id:
-                for child in item['xnat:scans']['xnat:scan']:
-                    if child['@type'] == "Z-Axial-Brain":
-                        usability = child['xnat:quality']
-        
-        usability = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'quality']
-        list_of_dict = dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
-        scan_info = [dict for dict in list_of_dict if dict['@ID'] == session_id]
-        tmp = [d for d in scan_info if "xnat:scans" in d]
-        tmp = tmp[0]
-        tmp = tmp['xnat:scans']['xnat:scan']
-        tmp = next((d for d in tmp if d.get("@type") == "Z-Axial-Brain"), None)
-        usability = tmp['xnat:quality']
-        '''
         usability = [
             child['xnat:quality']
             for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
@@ -325,13 +296,16 @@ def grab_custom_variables(subject_id, session_id):
         custom_variables_dict['Scan_Quality'] = usability[0]
         cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grade'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
         cerebral_stroke = cerebral_stroke[0]
+        
         value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
         padded = value_of_interest[0]+':00'
-        stroke_date = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_date']      
+        
+        
+        stroke_date = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_datetime']  # in prod: stroke_onset_datetime; in dev: stroke_onset_date
         stroke_date = stroke_date[0]
         # mm/dd/yyyy -> yyyy-mm-dd
         padded_date = stroke_date[6:]+'-'+stroke_date[:2]+'-'+stroke_date[3:5]
-        custom_variables_dict['Stroke_Time'] = padded
+        custom_variables_dict['Stroke_Time'] = padded #'00:00:00'  
         custom_variables_dict['Stroke_Date'] = padded_date
         custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
         #return session_id
@@ -361,7 +335,6 @@ def grab_dicom_info(sessionId):
     ds = pydicom.dcmread(filepaths[0])
     # to return 
     dicom_dict = {}
-    print(ds)
     acquisition_date = ds[0x0008, 0x0020].value # 0x0008, 0x0022 Acquisition Date in dev,prod: (0008, 0020) Study Date 
     acquisition_date= acquisition_date[:4]+'-'+acquisition_date[4:6]+'-'+acquisition_date[6:]
     print(acquisition_date)
@@ -657,7 +630,7 @@ def upload_xml(xml):
 
     url = "{}/xapi/archive/upload/xml".format(XNAT_HOST)
     print('unpload_xml() -- is it None?', xml)
-    xml_file_path = './'+xml # './08_10_23_13_32_36.xml'
+    xml_file_path = './'+xml # './08_25_23_15_32_24.xml'
     with open(xml_file_path, 'rb') as xml_file:
         response = requests.post(url, auth=(XNAT_USER, XNAT_PASS), files={'item': xml_file})
         try:
@@ -875,8 +848,9 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
+    
     one_sample_test()
-    '''
+    
     #below for full test
     start = time.time()
     subject_to_sessions = fetch_proper_pair_modularized()
@@ -897,4 +871,6 @@ if __name__ == '__main__':
     end = time.time()
     print('find_proper_subject_sessions -- time elapsed in seconds: ', end - start)
     test_main(useful_subject_to_session)
-    '''
+    
+
+    

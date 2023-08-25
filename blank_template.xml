@@ -21,7 +21,7 @@
 <workshop:Net_Water_Uptake></workshop:Net_Water_Uptake>
 <workshop:Infarct_Volumn></workshop:Infarct_Volumn>
 <workshop:Infarct_Side></workshop:Infarct_Side>
-<workshop:Analysis_Date>2023-01-01</workshop:Analysis_Date>
-<workshop:Version_Date>2023-01-01</workshop:Version_Date>
+<workshop:Analysis_Date></workshop:Analysis_Date>
+<workshop:Version_Date></workshop:Version_Date>
 <workshop:Cerebral_Edema_Grade></workshop:Cerebral_Edema_Grade>
 </workshop:BiosampleCollection>
