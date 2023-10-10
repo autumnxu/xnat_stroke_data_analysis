@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workshop:BiosampleCollection ID="" project="BJH" label="" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow https://snipr-dev-test1.nrg.wustl.edu/schemas/workflow.xsd http://nrg.wustl.edu/catalog https://snipr-dev-test1.nrg.wustl.edu/schemas/catalog.xsd http://nrg.wustl.edu/pipe https://snipr-dev-test1.nrg.wustl.edu/schemas/repository.xsd http://nrg.wustl.edu/rad https://snipr-dev-test1.nrg.wustl.edu/schemas/radRead.xsd http://nrg.wustl.edu/workshop https://snipr-dev-test1.nrg.wustl.edu/schemas/workshop.xsd http://nrg.wustl.edu/scr https://snipr-dev-test1.nrg.wustl.edu/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc https://snipr-dev-test1.nrg.wustl.edu/schemas/project.xsd http://icr.ac.uk/icr https://snipr-dev-test1.nrg.wustl.edu/schemas/roi.xsd http://nrg.wustl.edu/val https://snipr-dev-test1.nrg.wustl.edu/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat https://snipr-dev-test1.nrg.wustl.edu/schemas/xnat.xsd http://nrg.wustl.edu/xnat_assessments https://snipr-dev-test1.nrg.wustl.edu/schemas/assessments.xsd http://www.nbirn.net/prov https://snipr-dev-test1.nrg.wustl.edu/schemas/birnprov.xsd http://nrg.wustl.edu/security https://snipr-dev-test1.nrg.wustl.edu/schemas/security.xsd">
+<workshop:BiosampleCollection ID="" project="BJH" label="" xmlns:arc="http://nrg.wustl.edu/arc" xmlns:sni="http://nrg.wustl.edu/sni" xmlns:val="http://nrg.wustl.edu/val" xmlns:pipe="http://nrg.wustl.edu/pipe" xmlns:icr="http://icr.ac.uk/icr" xmlns:wrk="http://nrg.wustl.edu/workflow" xmlns:scr="http://nrg.wustl.edu/scr" xmlns:xdat="http://nrg.wustl.edu/security" xmlns:rad="http://nrg.wustl.edu/rad" xmlns:cat="http://nrg.wustl.edu/catalog" xmlns:workshop="http://nrg.wustl.edu/workshop" xmlns:prov="http://www.nbirn.net/prov" xmlns:xnat="http://nrg.wustl.edu/xnat" xmlns:xnat_a="http://nrg.wustl.edu/xnat_assessments" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nrg.wustl.edu/workflow https://snipr.wustl.edu/schemas/workflow.xsd http://nrg.wustl.edu/catalog https://snipr.wustl.edu/schemas/catalog.xsd http://nrg.wustl.edu/pipe https://snipr.wustl.edu/schemas/repository.xsd http://nrg.wustl.edu/rad https://snipr.wustl.edu/schemas/radRead.xsd http://nrg.wustl.edu/workshop https://snipr.wustl.edu/schemas/workshop.xsd http://nrg.wustl.edu/scr https://snipr.wustl.edu/schemas/screeningAssessment.xsd http://nrg.wustl.edu/arc https://snipr.wustl.edu/schemas/project.xsd http://icr.ac.uk/icr https://snipr.wustl.edu/schemas/roi.xsd http://nrg.wustl.edu/val https://snipr.wustl.edu/schemas/protocolValidation.xsd http://nrg.wustl.edu/xnat https://snipr.wustl.edu/schemas/xnat.xsd http://nrg.wustl.edu/sni https://snipr.wustl.edu/schemas/sniData.xsd http://nrg.wustl.edu/xnat_assessments https://snipr.wustl.edu/schemas/assessments.xsd http://www.nbirn.net/prov https://snipr.wustl.edu/schemas/birnprov.xsd http://nrg.wustl.edu/security https://snipr.wustl.edu/schemas/security.xsd">
 <xnat:date></xnat:date>
 <xnat:subject_ID></xnat:subject_ID>
 <workshop:Scan_Date></workshop:Scan_Date>
@@ -10,8 +10,8 @@
 <workshop:CT_Scanner></workshop:CT_Scanner>
 <workshop:Scan_Description></workshop:Scan_Description>
 <workshop:Scan_Selected></workshop:Scan_Selected>
-<workshop:DICOM_pixel_size_x></workshop:DICOM_pixel_size_x>
-<workshop:DICOM_pixel_size_y></workshop:DICOM_pixel_size_y>
+<workshop:DICOM_Pixel_Size_X></workshop:DICOM_Pixel_Size_X>
+<workshop:DICOM_Pixel_Size_Y></workshop:DICOM_Pixel_Size_Y>
 <workshop:X_Dimension></workshop:X_Dimension>
 <workshop:Y_Dimension></workshop:Y_Dimension>
 <workshop:Z_Dimension></workshop:Z_Dimension>
@@ -19,7 +19,7 @@
 <workshop:Total_Cerebrospinal_Fluid_Volume></workshop:Total_Cerebrospinal_Fluid_Volume>
 <workshop:Cerebrospinal_Fluid_Ratio></workshop:Cerebrospinal_Fluid_Ratio>
 <workshop:Net_Water_Uptake></workshop:Net_Water_Uptake>
-<workshop:Infarct_Volumn></workshop:Infarct_Volumn>
+<workshop:Infarct_Volume></workshop:Infarct_Volume>
 <workshop:Infarct_Side></workshop:Infarct_Side>
 <workshop:Analysis_Date></workshop:Analysis_Date>
 <workshop:Version_Date></workshop:Version_Date>

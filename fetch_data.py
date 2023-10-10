@@ -15,7 +15,7 @@ import time
 from collections import defaultdict # to avoid ambiguous {} initiating python dict
 import re # to extract version date and analysis date
 # global variables
-XNAT_HOST = 'https://snipr.wustl.edu' #   https://snipr-dev-test1.nrg.wustl.edu
+XNAT_HOST = 'https://snipr.wustl.edu' # 'https://snipr-dev-test1.nrg.wustl.edu'  'https://snipr.wustl.edu'
 XNAT_USER = 'autumnxu'
 XNAT_PASS = 'abc123'
 
@@ -164,7 +164,7 @@ def fill_info(sessionId, subject_id):
         return (None, None)
     
     
-    cutom_variables_dict = grab_custom_variables(subject_id, sessionId)
+    (cutom_variables_dict, label_name) = grab_custom_variables(subject_id, sessionId)
     
     if dicom_dict is None or nwu_dict is None or cutom_variables_dict is None:
         print('information incomplete for', sessionId, subject_id)
@@ -172,12 +172,12 @@ def fill_info(sessionId, subject_id):
     full_dict = {**dicom_dict, **nwu_dict, **cutom_variables_dict}
 
     full_dict["Elapsed_From_Stroke"] = time_diff(full_dict["Scan_Time"], full_dict["Stroke_Time"], full_dict["Scan_Date"], full_dict["Stroke_Date"])
-    file_name = write_to_blank_xml(full_dict, sessionId, subject_id)
+    file_name = write_to_blank_xml(full_dict, sessionId, subject_id, label_name)
     print("end of fill_info() -- is it none?", file_name)
     return (full_dict, file_name)
 
 
-def write_to_blank_xml(full_dict, sessionId, subject_id):
+def write_to_blank_xml(full_dict, sessionId, subject_id, label_name):
     print('entering write_to_blank_xml')
     with open('blank_template.xml', 'r', encoding='utf-8') as file:
         xml_read = file.read()
@@ -193,7 +193,7 @@ def write_to_blank_xml(full_dict, sessionId, subject_id):
         dict_of_xml[datatype_name][xml_workshop_filed] = full_dict[key]
     # give unique label and make pyxnat happy
     dict_of_xml[datatype_name]['@ID'] = ''
-    dict_of_xml[datatype_name]['@label'] = 'stroke_edema_'+sessionId+'_'+subject_id # later in this format: CT Session: BJH_001_11112019
+    dict_of_xml[datatype_name]['@label'] = 'stroke_edema_'+label_name+'_'+sessionId+'_'+subject_id # later in this format: CT Session: BJH_001_11112019
     modified_xml = xmltodict.unparse(dict_of_xml, pretty=True)
     # SAVE xml into a file
     print('view filled xml')
@@ -235,7 +235,7 @@ def grab_nwu_info(sessionId):
     decimal_place = 2
     net_water_uptake_dict['Net_Water_Uptake'] = round(dataframe.loc[0, "NWU"], decimal_place)
     net_water_uptake_dict['Infarct_Side'] = dataframe.loc[0, "INFARCT SIDE"]
-    net_water_uptake_dict['Infarct_Volumn'] = round(dataframe.loc[0, "INFARCT VOLUME"], decimal_place)
+    net_water_uptake_dict['Infarct_Volume'] = round(dataframe.loc[0, "INFARCT VOLUME"], decimal_place)
     net_water_uptake_dict['Total_Cerebrospinal_Fluid_Volume'] = round(dataframe.loc[0, "TOTAL CSF VOLUME"], decimal_place)
     net_water_uptake_dict['Cerebrospinal_Fluid_Ratio'] = round(dataframe.loc[0, "CSF RATIO"], decimal_place)
     file_name = os.path.basename(filepaths[0])
@@ -280,11 +280,12 @@ def grab_custom_variables(subject_id, session_id):
         xml_read = file.read()
 
     custom_variables_dict = {}
-
+    label_name = None
     dict_of_xml = xmltodict.parse(xml_read)
     list_of_dict = None
     try:
         list_of_dict = dict_of_xml['xnat:Subject']['xnat:fields']['xnat:field'] 
+        '''
         usability = [
             child['xnat:quality']
             for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']
@@ -292,27 +293,52 @@ def grab_custom_variables(subject_id, session_id):
             for child in item['xnat:scans']['xnat:scan']
             if child['@type'] == "Z-Axial-Brain"
         ]
+        '''
+        usability = []
+        label_name = None
+        found = False  # Flag variable to track whether we found the desired item
+
+        for item in dict_of_xml['xnat:Subject']['xnat:experiments']['xnat:experiment']:
+            if 'xnat:prearchivePath' in item:
+                label_name = os.path.basename(item['xnat:prearchivePath'])
+            if item['@ID'] == session_id:
+                for child in item['xnat:scans']['xnat:scan']:
+                    if child['@type'] == "Z-Axial-Brain":
+                        custom_variables_dict['Scan_Selected'] = child['@ID']
+                        usability.append(child['xnat:quality'])
+                        found = True  # Set the flag to True to indicate we found the item
+                        break  # Break out of the inner loop
+                if found:
+                    break  # If we found the item, break out of the outer loop as well
+            if found:
+                break
 
         custom_variables_dict['Scan_Quality'] = usability[0]
         cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grade'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
         cerebral_stroke = cerebral_stroke[0]
         
-        value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
-        padded = value_of_interest[0]+':00'
+        #value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
+        #padded = value_of_interest[0]+':00'
         
         
         stroke_date = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_datetime']  # in prod: stroke_onset_datetime; in dev: stroke_onset_date
         stroke_date = stroke_date[0]
         # mm/dd/yyyy -> yyyy-mm-dd
         padded_date = stroke_date[6:]+'-'+stroke_date[:2]+'-'+stroke_date[3:5]
-        custom_variables_dict['Stroke_Time'] = padded #'00:00:00'  
+        custom_variables_dict['Stroke_Time'] = '00:00:00'  #padded
         custom_variables_dict['Stroke_Date'] = padded_date
         custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
         #return session_id
         print(custom_variables_dict)
     except (KeyError, IndexError):
-        return None
-    return custom_variables_dict
+        print("custom variables incomplete")
+        return (None, None)
+    
+    match = re.match(r'^([^_]+_[^_]+)_', label_name)
+    if match:
+        label_name = match.group(1)
+
+    return (custom_variables_dict, label_name)
 
 '''
 functionality
@@ -338,19 +364,22 @@ def grab_dicom_info(sessionId):
     acquisition_date = ds[0x0008, 0x0020].value # 0x0008, 0x0022 Acquisition Date in dev,prod: (0008, 0020) Study Date 
     acquisition_date= acquisition_date[:4]+'-'+acquisition_date[4:6]+'-'+acquisition_date[6:]
     print(acquisition_date)
+    # MINIMUM required data 
     dicom_dict['Scan_Date'] = acquisition_date
     acquisition_time = ds[0x0008, 0x0030].value # 0x0008, 0x0032 Acquisition Time in dev, prod: (0008, 0030) Study Time   
     acquisition_time = acquisition_time.split('.')[0]
+    # MINIMUM required data 
     dicom_dict['Scan_Time']  = acquisition_time[:2] + ':' + acquisition_time[2:4] + ':' + acquisition_time[4:] 
 
     pixel_spacing = ds[0x0028, 0x0030]
+    # MINIMUM required data
     dicom_dict['Scan_Selected'] = ds[0x0020, 0x0012].value
     # for complete image size
     decimal_place = 2
-    dicom_dict['DICOM_pixel_size_x'] = round(pixel_spacing[0], decimal_place)
-    dicom_dict['DICOM_pixel_size_y'] = round(pixel_spacing[1], decimal_place)
+    dicom_dict['DICOM_Pixel_Size_X'] = round(pixel_spacing[0], decimal_place)
+    dicom_dict['DICOM_Pixel_Size_Y'] = round(pixel_spacing[1], decimal_place)
     dicom_dict['Z_Dimension'] = ds[0x0018, 0x0050].value # argue with Atul for whether this is needed
-    # for resolution
+    # for resolution  -- MINIMUM required data 
     dicom_dict['X_Dimension'] = ds[0x0028, 0x0010].value # row
     dicom_dict['Y_Dimension'] = ds[0x0028, 0x0011].value # column
     #dicom_dict['scan_id'] = ds[0x0020, 0x0011].value # series/aquisition number
@@ -630,11 +659,12 @@ def upload_xml(xml):
 
     url = "{}/xapi/archive/upload/xml".format(XNAT_HOST)
     print('unpload_xml() -- is it None?', xml)
-    xml_file_path = './'+xml # './08_25_23_15_32_24.xml'
+    xml_file_path = './'+ xml # '10_05_23_14_04_38.xml' # xml
     with open(xml_file_path, 'rb') as xml_file:
         response = requests.post(url, auth=(XNAT_USER, XNAT_PASS), files={'item': xml_file})
         try:
             response.raise_for_status()
+            print("here?")
         except requests.exceptions.HTTPError as err:
             print(f"Probably due to duplicate label, HTTP error occurred: {err}")
 
@@ -678,7 +708,7 @@ thisexperiment = subject.experiment('biosampleCollection_' + "{:03d}".format(x))
         'workshop:biosampleCollection/Total_Cerebrospinal_Fluid_Volume': '21.21',
         'workshop:biosampleCollection/Cerebrospinal_Fluid_Ratio': '212.12',
         'workshop:biosampleCollection/Net_Water_Uptake': '21.21',
-        'workshop:biosampleCollection/Infarct_Volumn': '212.212',
+        'workshop:biosampleCollection/Infarct_Volume': '212.212',
         'workshop:biosampleCollection/Infarct_Side': 'ememeee',
         'workshop:biosampleCollection/Analysis_Date': '2022-03-02',
         'workshop:biosampleCollection/Version_Date': '2021-04-03',
@@ -808,7 +838,7 @@ def test_main(subject_project_to_sesions_scans):
             Path('./'+directory).mkdir(parents=True, exist_ok=True)
             download_resource_file(custom_variables_url, file_name, directory)
     
-            (xml, file_name) = fill_info(session_id, subject)
+            (xml, file_name, label_name) = fill_info(session_id, subject)
             
             if file_name:
                 upload_xml(file_name)
@@ -838,6 +868,8 @@ def one_sample_test():
         download_resource_file(full_uri, os.path.basename(full_uri), directory)
     
     custom_variables_url = '/app/action/XDATActionRouter/xdataction/xml_file/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/{0}/popup/false/project/WashU'.format(subject_id)
+
+    # https://snipr.wustl.edu/app/action/XDATActionRouter/xdataction/xml/search_element/xnat%3AsubjectData/search_field/xnat%3AsubjectData.ID/search_value/SNIPR_S00917/popup/true/project/BJH
     file_name = subject_id+'custom_variable_xml'
     directory = subject_id+'_xmls'
     Path('./'+directory).mkdir(parents=True, exist_ok=True)
@@ -848,9 +880,10 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
+    #upload_xml(None)
     
     one_sample_test()
-    
+    '''
     #below for full test
     start = time.time()
     subject_to_sessions = fetch_proper_pair_modularized()
@@ -871,6 +904,6 @@ if __name__ == '__main__':
     end = time.time()
     print('find_proper_subject_sessions -- time elapsed in seconds: ', end - start)
     test_main(useful_subject_to_session)
-    
+    '''
 
     
