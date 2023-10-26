@@ -15,7 +15,7 @@ import time
 from collections import defaultdict # to avoid ambiguous {} initiating python dict
 import re # to extract version date and analysis date
 # global variables
-XNAT_HOST = 'https://snipr.wustl.edu' # 'https://snipr-dev-test1.nrg.wustl.edu'  'https://snipr.wustl.edu'
+XNAT_HOST = 'https://snipr-dev-test1.nrg.wustl.edu' # 'https://snipr-dev-test1.nrg.wustl.edu'  'https://snipr.wustl.edu'
 XNAT_USER = 'autumnxu'
 XNAT_PASS = 'abc123'
 
@@ -170,8 +170,10 @@ def fill_info(sessionId, subject_id):
         print('information incomplete for', sessionId, subject_id)
         return (None, None)
     full_dict = {**dicom_dict, **nwu_dict, **cutom_variables_dict}
-
-    full_dict["Elapsed_From_Stroke"] = time_diff(full_dict["Scan_Time"], full_dict["Stroke_Time"], full_dict["Scan_Date"], full_dict["Stroke_Date"])
+    
+    if "Scan_Time" in full_dict and "Stroke_Time" in full_dict and "Scan_Date" in full_dict and "Stroke_Date" in full_dict:
+        full_dict["Elapsed_From_Stroke"] = time_diff(full_dict["Scan_Time"], full_dict["Stroke_Time"], full_dict["Scan_Date"], full_dict["Stroke_Date"])
+    full_dict["Session_Name"] = sessionId
     file_name = write_to_blank_xml(full_dict, sessionId, subject_id, label_name)
     print("end of fill_info() -- is it none?", file_name)
     return (full_dict, file_name)
@@ -191,6 +193,9 @@ def write_to_blank_xml(full_dict, sessionId, subject_id, label_name):
     for key in full_dict:
         xml_workshop_filed = 'workshop:'+key
         dict_of_xml[datatype_name][xml_workshop_filed] = full_dict[key]
+    # delete fields that's not there
+    dict_of_xml[datatype_name] = {k: v for k, v in dict_of_xml[datatype_name].items() if v}
+
     # give unique label and make pyxnat happy
     dict_of_xml[datatype_name]['@ID'] = ''
     dict_of_xml[datatype_name]['@label'] = 'stroke_edema_'+label_name+'_'+sessionId+'_'+subject_id # later in this format: CT Session: BJH_001_11112019
@@ -303,7 +308,7 @@ def grab_custom_variables(subject_id, session_id):
                 label_name = os.path.basename(item['xnat:prearchivePath'])
             if item['@ID'] == session_id:
                 for child in item['xnat:scans']['xnat:scan']:
-                    if child['@type'] == "Z-Axial-Brain":
+                    if child['@type'] == "Z-Axial-Brain" or child['xnat:series_description'] == "Axial Head":
                         custom_variables_dict['Scan_Selected'] = child['@ID']
                         usability.append(child['xnat:quality'])
                         found = True  # Set the flag to True to indicate we found the item
@@ -312,11 +317,12 @@ def grab_custom_variables(subject_id, session_id):
                     break  # If we found the item, break out of the outer loop as well
             if found:
                 break
-
+        print(found)
         custom_variables_dict['Scan_Quality'] = usability[0]
-        cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grade'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
+        # 'cerebral_edema_grading_for_ischemic_stroke' or 'global_cerebral_edema_for_sah' 'cerebral_edema_grade' '
+        cerebral_stroke = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'cerebral_edema_grading_for_ischemic_stroke'] # Cerebral_Edema_Grading_for_Ischemic_Stroke -- name in dev
         cerebral_stroke = cerebral_stroke[0]
-        
+        custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
         #value_of_interest = [dict['#text'] for dict in list_of_dict if dict['@name'] == 'stroke_onset_time']
         #padded = value_of_interest[0]+':00'
         
@@ -327,12 +333,12 @@ def grab_custom_variables(subject_id, session_id):
         padded_date = stroke_date[6:]+'-'+stroke_date[:2]+'-'+stroke_date[3:5]
         custom_variables_dict['Stroke_Time'] = '00:00:00'  #padded
         custom_variables_dict['Stroke_Date'] = padded_date
-        custom_variables_dict['Cerebral_Edema_Grade'] = cerebral_stroke[0]
         #return session_id
         print(custom_variables_dict)
     except (KeyError, IndexError):
         print("custom variables incomplete")
-        return (None, None)
+        print(custom_variables_dict)
+        return (custom_variables_dict, label_name)
     
     match = re.match(r'^([^_]+_[^_]+)_', label_name)
     if match:
@@ -659,7 +665,7 @@ def upload_xml(xml):
 
     url = "{}/xapi/archive/upload/xml".format(XNAT_HOST)
     print('unpload_xml() -- is it None?', xml)
-    xml_file_path = './'+ xml # '10_05_23_14_04_38.xml' # xml
+    xml_file_path = './'+ '10_26_23_13_47_28.xml' # xml   
     with open(xml_file_path, 'rb') as xml_file:
         response = requests.post(url, auth=(XNAT_USER, XNAT_PASS), files={'item': xml_file})
         try:
@@ -880,9 +886,9 @@ def one_sample_test():
     upload_xml(file_name)
 
 if __name__ == '__main__':
-    #upload_xml(None)
+    upload_xml(None)
     
-    one_sample_test()
+    #one_sample_test()
     '''
     #below for full test
     start = time.time()

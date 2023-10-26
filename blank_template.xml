@@ -7,7 +7,7 @@
 <workshop:Stroke_Date></workshop:Stroke_Date>
 <workshop:Stroke_Time></workshop:Stroke_Time>
 <workshop:Elapsed_From_Stroke></workshop:Elapsed_From_Stroke>
-<workshop:Session_Number></workshop:Session_Number>
+<workshop:Session_Name></workshop:Session_Name>
 <workshop:CT_Scanner></workshop:CT_Scanner>
 <workshop:Scan_Description></workshop:Scan_Description>
 <workshop:Scan_Selected></workshop:Scan_Selected>
